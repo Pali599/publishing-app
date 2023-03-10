@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // admin
+
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
-    Route::get('/dashboard', [AdminController::class, 'dashboard']);
-    Route::get('/users', [AdminController::class, 'users']);
-    Route::get('/articles', [AdminController::class, 'articles']);
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 });
 
 
