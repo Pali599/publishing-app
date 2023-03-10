@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 // admin
 
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
-    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard']);
+
+    Route::get('users', [App\Http\Controllers\Admin\UsersController::class, 'index']);
+
+    Route::get('articles', [App\Http\Controllers\Admin\ArticlesController::class, 'index']);
 });
 
 
