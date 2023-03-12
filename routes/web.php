@@ -25,6 +25,11 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('users', [App\Http\Controllers\Admin\UsersController::class, 'index']);
 
     Route::get('articles', [App\Http\Controllers\Admin\ArticlesController::class, 'index']);
+
+    Route::get('category', [App\Http\Controllers\Admin\CategoryController::class, 'index']);
+    Route::get('add-category', [App\Http\Controllers\Admin\CategoryController::class, 'create']);
+    Route::post('add-category', [App\Http\Controllers\Admin\CategoryController::class, 'store']);
+
 });
 
 
