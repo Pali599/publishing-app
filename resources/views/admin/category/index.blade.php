@@ -35,7 +35,7 @@
                         <td>{{ $item->description }}</td>
                         <td>{{ $item->slug }}</td>
                         <td>
-                            <a href="" class="btn btn-success">Edit</a>
+                            <a href="{{ url('admin/edit-category/'.$item->id)}}" class="btn btn-success">Edit</a>
                         </td>
                         <td>
                             <a href="" class="btn btn-success">Delete</a>
