@@ -6,9 +6,6 @@
 <div class="container-fluid px-4">
     <h1 class="mt-4">Edit category</h1>
     <div class="card mt-4">
-        <div class="card-header">
-            <h4 class="">Edit category </h4>
-        </div>
         <div class="card-body">
 
             @if ($errors->any())

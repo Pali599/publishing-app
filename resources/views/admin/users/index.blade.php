@@ -1,24 +1,60 @@
 @extends('layouts.master')
 
-@section('title','Admin Dashboard')
+@section('title','Category')
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Dashboard</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Dashboard</li>
-    </ol>
-    <div class="row">
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-primary text-white mb-4">
-                <div class="card-body">Primary Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4>
+                Users <a href="{{ url('admin/add-user') }}" class="btn btn-primary btn-sm float-end">Add user</a>
+            </h4>
+        </div>
+        <div class="card-body">
+            @if (session('message'))
+                <div class="alert alert-success">{{ session('message') }}</div>
+            @endif
+
+            <table class="table table-boardered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Departure</th>
+                        <th>Role</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($user as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>{{ $item->departure }}</td>
+                        <td>{{ $item->role }}</td>
+                        <td>
+                            <a href="{{ url('admin/edit-user/'.$item->id)}}" class="btn btn-success">Edit</a>
+                        </td>
+                        <td>
+                            <a href="{{ url('admin/delete-user/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+
+
+
+
         </div>
     </div>
+
+    
 </div>
 
 @endsection

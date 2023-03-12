@@ -23,6 +23,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard']);
 
     Route::get('users', [App\Http\Controllers\Admin\UsersController::class, 'index']);
+    
 
     Route::get('articles', [App\Http\Controllers\Admin\ArticlesController::class, 'index']);
 
@@ -31,6 +32,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::post('add-category', [App\Http\Controllers\Admin\CategoryController::class, 'store']);
     Route::get('edit-category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit']);
     Route::put('update-category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
+    Route::get('delete-category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'delete']);
 
 });
 
