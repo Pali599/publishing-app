@@ -15,19 +15,20 @@
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         @vite(['public/assets/css/styles-home.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body>
         
-        @include('layouts.inc.admin-navbar')
+        @include('layouts.homesite.home-navbar')
 
-        <div id="layoutSidenav">
-            @include('layouts.inc.admin-sidebar')
+        <div>
+            @include('layouts.homesite.home-header')
+        </div>
 
-            <div id="layoutSidenav_content">
-                <main>
-                    @yield('content')
-                </main>
-                @include('layouts.inc.admin-footer')
-            </div>
+        <div>
+            @yield('content')
+        </div>
+
+        <div>
+            @include('layouts.homesite.home-footer')
         </div>
 
 
