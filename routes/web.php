@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\HomeSiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,16 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::put('update-category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
     Route::get('delete-category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'delete']);
 
+});
+
+// user 
+
+
+
+// guest
+
+Route::prefix('home')->group(function(){
+    Route::get('about', [App\Http\Controllers\HomeSiteController::class, 'about']);
 });
 
 
