@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\HomeSiteController;
+use App\Http\Controllers\User\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,31 +22,40 @@ use Illuminate\Support\Facades\Route;
 // admin
 
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
-    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard']);
+    Route::get('dashboard', [DashboardController::class, 'dashboard']);
 
-    Route::get('users', [App\Http\Controllers\Admin\UsersController::class, 'index']);
-    Route::get('delete-user/{user_id}', [App\Http\Controllers\Admin\UsersController::class, 'delete']);
+    Route::get('users', [UsersController::class, 'index']);
+    Route::get('delete-user/{user_id}', [UsersController::class, 'delete']);
     
 
-    Route::get('articles', [App\Http\Controllers\Admin\ArticlesController::class, 'index']);
+    Route::get('articles', [ArticlesController::class, 'index']);
 
-    Route::get('category', [App\Http\Controllers\Admin\CategoryController::class, 'index']);
-    Route::get('add-category', [App\Http\Controllers\Admin\CategoryController::class, 'create']);
-    Route::post('add-category', [App\Http\Controllers\Admin\CategoryController::class, 'store']);
-    Route::get('edit-category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit']);
-    Route::put('update-category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
-    Route::get('delete-category/{category_id}', [App\Http\Controllers\Admin\CategoryController::class, 'delete']);
+    Route::get('category', [CategoryController::class, 'index']);
+    Route::get('add-category', [CategoryController::class, 'create']);
+    Route::post('add-category', [CategoryController::class, 'store']);
+    Route::get('edit-category/{category_id}', [CategoryController::class, 'edit']);
+    Route::put('update-category/{category_id}', [CategoryController::class, 'update']);
+    Route::get('delete-category/{category_id}', [CategoryController::class, 'delete']);
 
 });
 
-// user 
+// user
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
+    Route::get('/article/add', [ArticleController::class, 'add'])->name('article.add');
+});
 
 
 // guest
 
 Route::prefix('home')->group(function(){
-    Route::get('about', [App\Http\Controllers\HomeSiteController::class, 'about']);
+    Route::get('about', [HomeSiteController::class, 'about']);
+    Route::get('contact', [HomeSiteController::class, 'contact']);
 });
 
 
@@ -56,11 +66,5 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 require __DIR__.'/auth.php';
