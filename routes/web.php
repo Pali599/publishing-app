@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeSiteController;
 use App\Http\Controllers\User\ArticleController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     
 
     Route::get('articles', [ArticlesController::class, 'index']);
+    
 
     Route::get('category', [CategoryController::class, 'index']);
     Route::get('add-category', [CategoryController::class, 'create']);
@@ -48,6 +50,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
     Route::get('/article/add', [ArticleController::class, 'add'])->name('article.add');
+    Route::post('/article/add', [ArticleController::class, 'store'])->name('article.add');
 });
 
 
