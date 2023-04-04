@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticlesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -30,6 +31,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     
 
     Route::get('articles', [ArticlesController::class, 'index']);
+    Route::get('articles/delete-article/{article_id}', [ArticlesController::class, 'delete']);
     
 
     Route::get('category', [CategoryController::class, 'index']);
