@@ -26,8 +26,7 @@
                             </a>
                             <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ url('admin/add-user') }}">Add user</a>
-                                    <a class="nav-link" href="{{ url('admin/users') }}">View users</a>
+                                    <a class="nav-link" href="{{ url('admin/users') }}">Manage users</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseArticles" aria-expanded="false" aria-controls="collapseArticles">

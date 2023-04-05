@@ -28,6 +28,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('dashboard', [DashboardController::class, 'dashboard']);
 
     Route::get('users', [UsersController::class, 'index']);
+    Route::get('edit-user/{user_id}', [UsersController::class, 'edit']);
+    Route::put('update-user/{user_id}', [UsersController::class, 'update']);
     Route::get('delete-user/{user_id}', [UsersController::class, 'delete']);
     
 

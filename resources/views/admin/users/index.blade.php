@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Category')
+@section('title','Users')
 
 @section('content')
 <div class="container-fluid px-4">
@@ -23,6 +23,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Departure</th>
+                        <th>Reviewer type</th>
                         <th>Role</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -35,6 +36,7 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->departure }}</td>
+                        <td>{{ $item->type }}</td>
                         <td>{{ $item->role }}</td>
                         <td>
                             <a href="{{ url('admin/edit-user/'.$item->id)}}" class="btn btn-success">Edit</a>
