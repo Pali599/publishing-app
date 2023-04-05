@@ -21,7 +21,7 @@
                     <tr>
                         <th>Title</th>
                         <th>Category</th>
-                        <th>Description</th>
+                        <th>Abstract</th>
                         <th>File</th>
                         <th>Keywords</th>
                         <th>Author</th>
@@ -39,7 +39,7 @@
                         <td>{{ $item->keywords }}</td>
                         <td>{{ $item->author->name}}</td>
                         <td>
-                            <a href="{{ url('admin/edit-category/'.$item->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Edit</a>
                         </td>
                         <td>
                             <a href="{{ url('admin/articles/delete-article/'.$item->id)}}" class="btn btn-danger">Delete</a>

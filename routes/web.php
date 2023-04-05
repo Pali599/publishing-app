@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeSiteController;
 use App\Http\Controllers\User\ArticleController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SendEmailNotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     
 
     Route::get('articles', [ArticlesController::class, 'index']);
+    Route::get('edit-article/{article_id}', [ArticlesController::class, 'edit']);
+    Route::put('update-article/{article_id}', [ArticlesController::class, 'update']);
     Route::get('articles/delete-article/{article_id}', [ArticlesController::class, 'delete']);
     
 
@@ -40,6 +43,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('edit-category/{category_id}', [CategoryController::class, 'edit']);
     Route::put('update-category/{category_id}', [CategoryController::class, 'update']);
     Route::get('delete-category/{category_id}', [CategoryController::class, 'delete']);
+
+    
 
 });
 

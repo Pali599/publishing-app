@@ -40,7 +40,7 @@
 
                 <!-- Description -->
                 <div class="mt-4">
-                    <x-input-label for="description" :value="__('Description')" />
+                    <x-input-label for="description" :value="__('Abstract')" />
                     <textarea id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autocomplete="title" ></textarea>
                 </div>
 

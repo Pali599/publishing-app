@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Events\NotificationEmail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Article\ArticleFormRequest;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class ArticleController extends Controller
 {
@@ -42,6 +44,8 @@ class ArticleController extends Controller
         $article->keywords = $data['keywords'];
         $article->created_by = Auth::user()->id;
         $article->save();
+
+        Event(new NotificationEmail($article));
 
         return redirect('/article')->with('message','Article added successfully');
 
