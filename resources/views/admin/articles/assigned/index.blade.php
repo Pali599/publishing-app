@@ -8,7 +8,7 @@
     <div class="card mt-4">
         <div class="card-header">
             <h4>
-                View Articles <a href="{{ url('article/add') }}" class="btn btn-primary btn-sm float-end">Add article</a>
+                Assigned Articles <a href="{{ url('article/add') }}" class="btn btn-primary btn-sm float-end">Add article</a>
             </h4>
         </div>
         <div class="card-body">
@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                     @foreach($article as $item)
-                        @if($item->reviewer_int == 0 && $item->reviewer_ext == 0)
+                        @if($item->reviewer_int != 0 && $item->reviewer_ext != 0)
                             <tr>
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->category->name }}</td>

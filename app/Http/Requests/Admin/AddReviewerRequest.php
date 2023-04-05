@@ -24,8 +24,8 @@ class AddReviewerRequest extends FormRequest
         $rules = [
 
             'category_id' => ['required','integer'],
-            'reviewer_int' => ['required','integet'],
-            'reviewer_ext' => ['required','integer'],
+            'reviewer_int' => ['required','string'],
+            'reviewer_ext' => ['required','string'],
             
         ];
 

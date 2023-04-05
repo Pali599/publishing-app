@@ -37,7 +37,7 @@
                             <div class="collapse" id="collapseArticles" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{ url('admin/articles') }}">New articles</a>
-                                    <a class="nav-link" href="{{ url('admin/articles') }}">Assigned articles</a>
+                                    <a class="nav-link" href="{{ url('admin/articles/assigned') }}">Assigned articles</a>
                                     <a class="nav-link" href="{{ url('admin/articles') }}">Reviewed articles</a>
                                 </nav>
                             </div>

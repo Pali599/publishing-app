@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ArticlesController;
+use App\Http\Controllers\Admin\AssignedArticlesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -37,6 +38,10 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('edit-article/{article_id}', [ArticlesController::class, 'edit']);
     Route::put('update-article/{article_id}', [ArticlesController::class, 'update']);
     Route::get('articles/delete-article/{article_id}', [ArticlesController::class, 'delete']);
+
+    Route::get('articles/assigned', [AssignedArticlesController::class, 'index']);
+
+
     
 
     Route::get('category', [CategoryController::class, 'index']);
