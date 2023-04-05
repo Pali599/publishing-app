@@ -35,12 +35,12 @@ class Article extends Model
         return $this->belongsTo(User::class,'created_by','id');
     }
 
-    public function reviewer_int()
+    public function internal()
     {
         return $this->belongsTo(User::class,'reviewer_int','id');
     }
 
-    public function reviewer_ext()
+    public function external()
     {
         return $this->belongsTo(User::class,'reviewer_ext','id');
     }

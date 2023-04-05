@@ -20,29 +20,19 @@
                         <tr>
                             <th>Title</th>
                             <th>Category</th>
-                            <th>Abstract</th>
-                            <th>File</th>
                             <th>Keywords</th>
-                            <th>Author</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>Review</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($article as $item)
-                            @if($item->created_by == auth()->user()->id)
+                            @if($item->reviewer_int == auth()->user()->id || $item->reviewer_ext == auth()->user()->id)
                                 <tr>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ $item->category->name }}</td>
-                                    <td>{{ $item->description }}</td>
-                                    <td>{{ $item->file }}</td>
                                     <td>{{ $item->keywords }}</td>
-                                    <td>{{ $item->author->name}}</td>
                                     <td>
-                                        <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Edit</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ url('admin/articles/delete-article/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                                        <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Review</a>
                                     </td>
                                 </tr>
                             @endif

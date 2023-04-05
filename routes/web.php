@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeSiteController;
 use App\Http\Controllers\User\ArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendEmailNotificationController;
+use App\Http\Controllers\User\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
     Route::get('/article/add', [ArticleController::class, 'add'])->name('article.add');
     Route::post('/article/add', [ArticleController::class, 'store'])->name('article.add');
+
+    Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
 });
 
 

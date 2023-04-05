@@ -25,6 +25,8 @@
                         <th>File</th>
                         <th>Keywords</th>
                         <th>Author</th>
+                        <th>Internal Reviewer</th>
+                        <th>External Reviewer</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -39,6 +41,8 @@
                                 <td>{{ $item->file }}</td>
                                 <td>{{ $item->keywords }}</td>
                                 <td>{{ $item->author->name}}</td>
+                                <td>{{ $item->internal->name}}</td>
+                                <td>{{ $item->external->name}}</td>
                                 <td>
                                     <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Edit</a>
                                 </td>
