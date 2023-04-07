@@ -4,7 +4,7 @@ namespace App\Http\Requests\Article;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ArticleFormRequest extends FormRequest
+class EditUserArticleFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,6 +21,7 @@ class ArticleFormRequest extends FormRequest
      */
     public function rules(): array
     {
+
         $fileRule = $this->route()->named('store') ? 'required' : 'nullable';
 
         $rules = [

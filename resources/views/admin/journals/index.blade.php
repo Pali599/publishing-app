@@ -8,7 +8,7 @@
     <div class="card mt-4">
         <div class="card-header">
             <h4>
-                Journals <a href="{{ url('article/add') }}" class="btn btn-primary btn-sm float-end">Add article</a>
+                Journals <a href="{{ url('article/add') }}" class="btn btn-primary btn-sm float-end">Add journal</a>
             </h4>
         </div>
         <div class="card-body">

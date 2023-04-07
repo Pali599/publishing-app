@@ -58,6 +58,7 @@
                             </a>
                             <div class="collapse" id="collapseJournals" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ url('admin/journals/add') }}">Add journal</a>
                                     <a class="nav-link" href="{{ url('admin/journals') }}">Manage journals</a>
                                 </nav>
                             </div>

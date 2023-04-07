@@ -14,6 +14,7 @@ use App\Http\Controllers\SendEmailNotificationController;
 use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\Admin\AdminReviewController;
 use App\Http\Controllers\Admin\AdminJournalController;
+use App\Http\Controllers\DownloadFileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
     Route::get('/article/add', [ArticleController::class, 'add'])->name('article.add');
     Route::post('/article/add', [ArticleController::class, 'store'])->name('article.add');
+    Route::get('/article/display-article/{article_id}', [ArticleController::class, 'display'])->name('article.display');
+    Route::get('/article/edit-article/{article_id}', [ArticleController::class, 'edit'])->name('article.edit');
+    Route::put('/article/update-article/{article_id}', [ArticleController::class, 'update'])->name('article.update');
+    Route::get('/article/delete-article/{article_id}', [ArticleController::class, 'delete'])->name('article.delete');
 
     Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
 });
@@ -84,6 +89,7 @@ Route::prefix('home')->group(function(){
     Route::get('contact', [HomeSiteController::class, 'contact']);
 });
 
+Route::get('/download/{filename}', [DownloadFileController::class, 'download']);
 
 Route::get('/', function () {
     return view('home.index');

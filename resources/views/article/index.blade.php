@@ -20,12 +20,7 @@
                         <tr>
                             <th>Title</th>
                             <th>Category</th>
-                            <th>Abstract</th>
-                            <th>File</th>
                             <th>Keywords</th>
-                            <th>Author</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,15 +29,12 @@
                                 <tr>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ $item->category->name }}</td>
-                                    <td>{{ $item->description }}</td>
-                                    <td>{{ $item->file }}</td>
                                     <td>{{ $item->keywords }}</td>
-                                    <td>{{ $item->author->name}}</td>
                                     <td>
-                                        <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Edit</a>
+                                        <a href="{{ url('article/display-article/'.$item->id)}}" class="btn btn-success">Show</a>
                                     </td>
                                     <td>
-                                        <a href="{{ url('admin/articles/delete-article/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                                        <a href="{{ url('article/delete-article/'.$item->id)}}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endif
