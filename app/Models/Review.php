@@ -13,11 +13,8 @@ class Review extends Model
 
     protected $fillable = [
         'article_id',
-        'reviewer_int',
-        'reviewer_ext',
-        'result_int',
-        'result_ext',
-        'comment_int',
-        'comment_ext'
+        'reviewer_id',
+        'result',
+        'comment',
     ];
 }

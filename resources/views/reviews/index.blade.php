@@ -3,7 +3,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My articles') }}
+            {{ __('Articles assigned to me for reviewing') }}
         </h2>
     </x-slot>
 
@@ -32,7 +32,7 @@
                                     <td>{{ $item->category->name }}</td>
                                     <td>{{ $item->keywords }}</td>
                                     <td>
-                                        <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Review</a>
+                                        <a href="{{ url('review/display-review/'.$item->id)}}" class="btn btn-success">Review</a>
                                     </td>
                                 </tr>
                             @endif

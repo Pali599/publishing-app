@@ -79,6 +79,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/article/delete-article/{article_id}', [ArticleController::class, 'delete'])->name('article.delete');
 
     Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
+    Route::get('/review/display-review/{article_id}', [ReviewController::class, 'display'])->name('review.display');
+    Route::get('/review/add-review/{article_id}', [ReviewController::class, 'add'])->name('review.add');
+    Route::post('/review/add-review/{article_id}', [ReviewController::class, 'store'])->name('review.add');
 });
 
 
