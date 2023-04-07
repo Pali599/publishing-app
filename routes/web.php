@@ -87,15 +87,12 @@ Route::middleware('auth')->group(function () {
 
 // guest
 
-Route::prefix('home')->group(function(){
-    Route::get('about', [HomeSiteController::class, 'about']);
-    Route::get('contact', [HomeSiteController::class, 'contact']);
-});
-
 Route::get('/download/{filename}', [DownloadFileController::class, 'download']);
 
-Route::get('/', function () {
-    return view('home.index');
+Route::prefix('')->group(function () {
+    Route::get('/', [HomeSiteController::class, 'index']);
+    Route::get('/home/about', [HomeSiteController::class, 'about']);
+    Route::get('/home/contact', [HomeSiteController::class, 'contact']);
 });
 
 Route::get('/dashboard', function () {

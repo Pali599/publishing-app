@@ -22,7 +22,7 @@ class Article extends Model
         'created_by',
         'reviewer_int',
         'reviewer_ext',
-        'share'
+        'published',
     ];
 
     public function category()

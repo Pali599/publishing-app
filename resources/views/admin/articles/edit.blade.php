@@ -72,6 +72,10 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="mb-3">
+                    <label for="">Publish</label>
+                    <input type="checkbox" name="published">
+                </div>
                 <div class="row justify-content-md-center">
                     <div class="col-md-auto">
                         <button type="submit" class="btn btn-primary">Save</button>

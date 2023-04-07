@@ -6,11 +6,6 @@
 <div class="container-fluid px-4">
 
     <div class="card mt-4">
-        <div class="card-header">
-            <h4>
-                Reviews <a href="{{ url('article/add') }}" class="btn btn-primary btn-sm float-end">Add article</a>
-            </h4>
-        </div>
         <div class="card-body">
             @if (session('message'))
                 <div class="alert alert-success">{{ session('message') }}</div>
@@ -37,10 +32,10 @@
                                 <td>{{ $item->result }}</td>
                                 <td>{{ $item->comment }}</td>
                                 <td>
-                                    <a href="{{ url('admin/edit-article/'.$item->article_id)}}" class="btn btn-success">Edit</a>
+                                    <a href="{{ url('admin/edit-article/'.$item->article_id)}}" class="btn btn-success">Edit article</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/articles/delete-article/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ url('admin/articles/delete-article/'.$item->article->id)}}" class="btn btn-danger">Delete article</a>
                                 </td>
                             </tr>
                     @endforeach
