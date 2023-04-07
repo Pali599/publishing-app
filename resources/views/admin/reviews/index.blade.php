@@ -20,37 +20,29 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Category</th>
-                        <th>Abstract</th>
-                        <th>File</th>
-                        <th>Keywords</th>
-                        <th>Author</th>
-                        <th>Internal Reviewer</th>
-                        <th>External Reviewer</th>
+                        <th>Reviewer</th>
+                        <th>Type</th>
+                        <th>Result</th>
+                        <th>Comment</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($article as $item)
-                        @if($item->reviewer_int != 0 && $item->reviewer_ext != 0)
+                    @foreach($review as $item)
                             <tr>
-                                <td>{{ $item->title }}</td>
-                                <td>{{ $item->category->name }}</td>
-                                <td>{{ $item->description }}</td>
-                                <td>{{ $item->file }}</td>
-                                <td>{{ $item->keywords }}</td>
-                                <td>{{ $item->author->name}}</td>
-                                <td>{{ $item->internal->name}}</td>
-                                <td>{{ $item->external->name}}</td>
+                                <td>{{ $item->article->title }}</td>
+                                <td>{{ $item->reviewer->name }}</td>
+                                <td>{{ $item->reviewer->type }}</td>
+                                <td>{{ $item->result }}</td>
+                                <td>{{ $item->comment }}</td>
                                 <td>
-                                    <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Edit</a>
+                                    <a href="{{ url('admin/edit-article/'.$item->article_id)}}" class="btn btn-success">Edit</a>
                                 </td>
                                 <td>
                                     <a href="{{ url('admin/articles/delete-article/'.$item->id)}}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
-                        @endif
                     @endforeach
                 </tbody>
             </table>
