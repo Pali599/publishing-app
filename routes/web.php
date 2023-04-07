@@ -12,6 +12,8 @@ use App\Http\Controllers\User\ArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendEmailNotificationController;
 use App\Http\Controllers\User\ReviewController;
+use App\Http\Controllers\Admin\AdminReviewController;
+use App\Http\Controllers\Admin\AdminJournalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +43,10 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('articles/delete-article/{article_id}', [ArticlesController::class, 'delete']);
 
     Route::get('articles/assigned', [AssignedArticlesController::class, 'index']);
+
+    Route::get('reviews', [AdminReviewController::class, 'index']);
+
+    Route::get('journals', [AdminJournalController::class, 'index']);
 
 
     
