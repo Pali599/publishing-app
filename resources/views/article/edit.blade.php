@@ -52,12 +52,16 @@
                         <label for="">Author</label>
                         <p type="text" name="keywords" class="form-control" value="">{{ $article->author->name }}</p>
                     </div>
-                    <div class="row justify-content-md-center">
-                        <div class="col-md-auto">
-                            <button type="submit" class="btn btn-primary">Save</button>
+                    <div class="d-flex justify-content-center">
+                        <div class="flex items-center justify-end mt-4">
+                            <x-primary-button class="ml-4" type="submit">
+                                {{ __('Add') }}
+                            </x-primary-button>
                         </div>
-                        <div class="col-md-auto">
-                            <a href="{{url()->previous()}}" class="btn btn-secondary">Cancel</a>
+                        <div class="flex items-center justify-end mt-4">
+                            <x-secondary-button class="ml-4">
+                                {{ __('Cancel') }}
+                            </x-secondary-button>
                         </div>
                     </div>
                 </form>
