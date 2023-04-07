@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Journal extends Model
 {
     use HasFactory;
+
+    protected $table = 'journals';
+
+    protected $fillable = [
+        'title',
+        'version',
+        'file',
+        'published'
+    ];
 }

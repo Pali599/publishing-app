@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('journals', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('version');
+            $table->string('file');
+            $table->tinyInteger('published')->default('0');
             $table->timestamps();
         });
     }

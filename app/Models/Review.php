@@ -15,9 +15,9 @@ class Review extends Model
         'article_id',
         'reviewer_int',
         'reviewer_ext',
-        'int_review',
-        'ext_review',
-        'int_comment',
-        'ext_comment'
+        'result_int',
+        'result_ext',
+        'comment_int',
+        'comment_ext'
     ];
 }
