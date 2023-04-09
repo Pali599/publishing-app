@@ -16,11 +16,18 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <!-- Departure -->
+        <!-- University -->
         <div class="mt-4">
-            <x-input-label for="departure" :value="__('Departure')" />
-            <x-text-input id="departure" class="block mt-1 w-full" type="text" name="departure" :value="old('departure')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('departure')" class="mt-2" />
+            <x-input-label for="university" :value="__('University')" />
+            <x-text-input id="university" class="block mt-1 w-full" type="text" name="university" :value="old('university')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('university')" class="mt-2" />
+        </div>
+
+        <!-- Faculty -->
+        <div class="mt-4">
+            <x-input-label for="faculty" :value="__('Faculty')" />
+            <x-text-input id="faculty" class="block mt-1 w-full" type="text" name="faculty" :value="old('faculty')" required autocomplete="university" />
+            <x-input-error :messages="$errors->get('faculty')" class="mt-2" />
         </div>
 
         <!-- Password -->

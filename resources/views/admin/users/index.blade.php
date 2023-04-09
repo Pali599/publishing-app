@@ -22,7 +22,8 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Departure</th>
+                        <th>University</th>
+                        <th>Faculty</th>
                         <th>Reviewer type</th>
                         <th>Role</th>
                         <th>Edit</th>
@@ -35,7 +36,8 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
-                        <td>{{ $item->departure }}</td>
+                        <td>{{ $item->university }}</td>
+                        <td>{{ $item->faculty }}</td>
                         <td>{{ $item->type }}</td>
                         <td>{{ $item->role }}</td>
                         <td>

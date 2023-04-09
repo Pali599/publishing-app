@@ -24,7 +24,8 @@ class EditUserFormRequest extends FormRequest
         $rules = [
             'name' => ['required', 'string', 'max:200'],
             'email' => ['required','string'],
-            'departure' => ['required','string'],
+            'university' => ['required','string'],
+            'faculty' => ['required','string'],
             'type' => ['required','string'],
             'role' => ['required','integer'],
         ];

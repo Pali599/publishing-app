@@ -26,11 +26,15 @@
                 </div>
                 <div class="mb-3">
                     <label for="">Email</label>
-                    <input type="text" name="email" value="{{ $user->email }}" class="form-control">
+                    <input type="text" name="email" class="form-control" value="{{$user->email}}">
                 </div>
                 <div class="mb-3">
-                    <label for="">Departure</label>
-                    <input type="text" name="departure" value="{{ $user->departure }}" class="form-control">
+                    <label for="">University</label>
+                    <input type="text" name="university" value="{{ $user->university }}" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="">Faculty</label>
+                    <input type="text" name="faculty" value="{{ $user->faculty }}" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="">Reviewer type</label>
@@ -42,8 +46,8 @@
                 <div class="mb-3">
                     <label for="">Role</label>
                     <select id="role" class="form-select" type="text" name="role" required autocomplete="title">
-                        <option value="1">Admin</option>
                         <option value="0">User</option>
+                        <option value="1">Admin</option>
                     </select>
                 </div>
                 <div class="row justify-content-md-center">

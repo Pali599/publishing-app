@@ -29,7 +29,8 @@ class UsersController extends Controller
         $user = User::find($user_id);
         $user->name = $data['name'];
         $user->email = $data['email'];
-        $user->departure = $data['departure'];
+        $user->university = $data['university'];
+        $user->faculty = $data['faculty'];
         $user->type = $data['type'];
         $user->role = $data['role'];
         $user->update();
