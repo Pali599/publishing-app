@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EditUserFormRequest;
 use App\Models\User;
+use App\Models\UserRole;
+use App\Models\UserType;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -18,8 +20,10 @@ class UsersController extends Controller
     public function edit($user_id)
     {
         $user = User::find($user_id);
+        $role = UserRole::all();
+        $type = UserType::all();
 
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.edit', compact('user','role','type'));
     }
 
     public function update(EditUserFormRequest $request, $user_id)
@@ -31,8 +35,8 @@ class UsersController extends Controller
         $user->email = $data['email'];
         $user->university = $data['university'];
         $user->faculty = $data['faculty'];
-        $user->type = $data['type'];
-        $user->role = $data['role'];
+        $user->type_id = $data['type_id'];
+        $user->role_id = $data['role_id'];
         $user->update();
 
         return redirect('admin/users')->with('message','User updated Successfully');

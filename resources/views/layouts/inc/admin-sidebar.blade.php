@@ -38,7 +38,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{ url('admin/articles') }}">New articles</a>
                                     <a class="nav-link" href="{{ url('admin/articles/assigned') }}">Assigned articles</a>
-                                    <a class="nav-link" href="{{ url('admin/articles') }}">Reviewed articles</a>
+                                    <a class="nav-link" href="{{ url('admin/articles/published') }}">Published articles</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReviews" aria-expanded="false" aria-controls="collapseJournals">

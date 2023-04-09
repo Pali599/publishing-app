@@ -28,7 +28,7 @@
                             <tr>
                                 <td>{{ $item->article->title }}</td>
                                 <td>{{ $item->reviewer->name }}</td>
-                                <td>{{ $item->reviewer->type }}</td>
+                                <td>{{ $item->reviewer->type->type }}</td>
                                 <td>{{ $item->result }}</td>
                                 <td>{{ $item->comment }}</td>
                                 <td>

@@ -20,7 +20,7 @@ class AdminMiddleware
             // admin role == 1
             // user role == 0
 
-            if(Auth::user()->role == '1') {
+            if(Auth::user()->role_id == '1') {
                 return $next($request);
             } else {
                 return redirect('/profile');

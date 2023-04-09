@@ -28,7 +28,7 @@
                 </thead>
                 <tbody>
                     @foreach($article as $item)
-                        @if($item->reviewer_int != 0 && $item->reviewer_ext != 0 && $item->published != 'yes')
+                        @if($item->published == 'yes')
                             <tr>
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->category->name }}</td>

@@ -15,6 +15,7 @@ class AdminReviewController extends Controller
     {
         $article = Article::all();
         $review = Review::all();
-        return view('admin.reviews.index', compact('article','review'));
+        $user = User::all();
+        return view('admin.reviews.index', compact('article','review','user'));
     }
 }

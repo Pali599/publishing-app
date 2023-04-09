@@ -24,7 +24,7 @@
                         <th>Email</th>
                         <th>University</th>
                         <th>Faculty</th>
-                        <th>Reviewer type</th>
+                        <th>Type</th>
                         <th>Role</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -38,8 +38,8 @@
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->university }}</td>
                         <td>{{ $item->faculty }}</td>
-                        <td>{{ $item->type }}</td>
-                        <td>{{ $item->role }}</td>
+                        <td>{{ $item->type->type }}</td>
+                        <td>{{ $item->role->role }}</td>
                         <td>
                             <a href="{{ url('admin/edit-user/'.$item->id)}}" class="btn btn-success">Edit</a>
                         </td>

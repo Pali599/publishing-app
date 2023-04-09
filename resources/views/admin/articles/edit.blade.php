@@ -39,7 +39,7 @@
                 <div class="mb-3">
                     <label for="">File</label>
                     @if($article->file)
-                        <a href="uploads/article/" download="{{ $article->file }}" class="form-control">{{ $article->file }}</a>
+                        <a href="{{ url('/download/' . $article->file) }}" class="form-control">{{ $article->file }}</a>
                     @else
                         <p>No file available</p>
                     @endif
@@ -53,21 +53,21 @@
                     <p type="text" name="keywords" class="form-control">{{ $article->author->name }}</p>
                 </div>
                 <div class="mb-3">
-                    <label for="">Intern reviewer</label>
+                    <label for="">Internal reviewer</label>
                     <select id="reviewer_int" class="form-select" type="text" name="reviewer_int" required autocomplete="title">
                         @foreach($user as $useritem)
-                            @if($useritem->type == 'internal')
-                                <option value="{{ $useritem->id }}">{{ $useritem->name }}</option>
+                            @if($useritem->type->type == 'internal')
+                            <option value="{{ $useritem->id }}" {{ $article->reviewer_int == $useritem->id ? 'selected' : '' }}>{{ $useritem->name }}</option>
                             @endif
                         @endforeach
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="">Extern Reviewer</label>
+                    <label for="">External Reviewer</label>
                     <select id="reviewer_ext" class="form-select" type="text" name="reviewer_ext" required autocomplete="title">
                         @foreach($user as $useritem)
-                            @if($useritem->type == 'external')
-                                <option value="{{ $useritem->id }}">{{ $useritem->name }}</option>
+                            @if($useritem->type->type == 'external')
+                                <option value="{{ $useritem->id }}" {{ $article->reviewer_ext == $useritem->id ? 'selected' : '' }}>{{ $useritem->name }}</option>
                             @endif
                         @endforeach
                     </select>

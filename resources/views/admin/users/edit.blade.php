@@ -38,16 +38,18 @@
                 </div>
                 <div class="mb-3">
                     <label for="">Reviewer type</label>
-                    <select id="reviewer" class="form-select" type="text" name="type" required autocomplete="title">
-                        <option value="internal">Internal Reviewer</option>
-                        <option value="external">External Reviewer</option>
+                    <select id="type_id" class="form-select" type="text" name="type_id" required autocomplete="title">
+                        @foreach($type as $typeitem)
+                            <option value="{{ $typeitem->id }}" {{ $user->type_id == $typeitem->id ? 'selected' : '' }}>{{ $typeitem->type }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="">Role</label>
-                    <select id="role" class="form-select" type="text" name="role" required autocomplete="title">
-                        <option value="0">User</option>
-                        <option value="1">Admin</option>
+                    <select id="role_id" class="form-select" type="text" name="role_id" required autocomplete="title">
+                        @foreach($role as $roleitem)
+                            <option value="{{ $roleitem->id }}" {{ $user->role_id == $roleitem->id ? 'selected' : '' }}>{{ $roleitem->role }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="row justify-content-md-center">

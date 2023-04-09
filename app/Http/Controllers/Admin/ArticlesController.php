@@ -40,7 +40,7 @@ class ArticlesController extends Controller
 
         $article->update();
 
-        return redirect('admin/articles')->with('message','Article updated Successfully');
+        return redirect('admin/articles/assigned')->with('message','Article updated Successfully');
     }
 
     public function delete($article_id)
