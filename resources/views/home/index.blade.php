@@ -12,12 +12,21 @@
             @foreach($article as $item)
                 @if($item->published == "yes")
                     <div class="post-preview">
-                        <a href="post.html">
+                        <a href="{{ url('/home/details/' . $item->id) }}">
                             <h2 class="post-title">{{ $item->title }}</h2>
-                            <button class="btn btn-dark btn-sm rounded-pill" target="_blank"><a href="{{ url('/download/' . $item->file) }}" class="text-white">PDF</a></button>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="{{ url('/download/' . $item->file) }}">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fas fa-circle fa-stack-2x"></i>
+                                            <i class="fas fa-file-pdf fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
                         </a>
                         <p class="post-meta">
-                            Posted by
+                            Published by
                             <a href="#!">{{ $item->author->name}}</a>
                             on {{ $item->updated_at}}
                         </p>

@@ -21,7 +21,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <li class="nav-item"><a :href="route('logout')" class="nav-link px-lg-3 py-3 py-lg-4" onclick="event.preventDefault(); this.closest('form').submit();">Log out</a></li>
+                            <li class="nav-item"><a href="route('logout')" class="nav-link px-lg-3 py-3 py-lg-4" onclick="event.preventDefault(); this.closest('form').submit();">Log out</a></li>
                         </form>
                     @else
                         <li class="nav-item"><a href="{{ route('login') }}" class="nav-link px-lg-3 py-3 py-lg-4">Log in</a></li>

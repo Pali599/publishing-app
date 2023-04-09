@@ -13,6 +13,12 @@ class HomeSiteController extends Controller
         return view('home.index', compact('article'));
     }
 
+    public function details($article_id)
+    {
+        $article = Article::find($article_id);
+        return view('home.details', compact('article'));
+    }
+
     public function about()
     {
         return view('home.about');

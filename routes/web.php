@@ -93,6 +93,7 @@ Route::prefix('')->group(function () {
     Route::get('/', [HomeSiteController::class, 'index']);
     Route::get('/home/about', [HomeSiteController::class, 'about']);
     Route::get('/home/contact', [HomeSiteController::class, 'contact']);
+    Route::get('/home/details/{article_id}', [HomeSiteController::class, 'details']);
 });
 
 Route::get('/dashboard', function () {
