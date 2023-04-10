@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Events\NotificationEmail;
+use App\Events\ReviewAddedAndNotifyUserEvent;
+use App\Events\ReviewerAddedEvent;
+use App\Listeners\NotificationEmailListener;
+use App\Listeners\SendNotificationToReviewer;
+use App\Listeners\SendNotificationToUser;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,7 +24,17 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        NotificationEmail::class => [
+            NotificationEmailListener::class,
+        ],
+        ReviewerAddedEvent::class => [
+            SendNotificationToReviewer::class,
+        ],
+        ReviewAddedAndNotifyUserEvent::class => [
+            SendNotificationToUser::class,
+        ],
     ];
+    
 
     /**
      * Register any events for your application.

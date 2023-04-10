@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Events\ReviewAddedAndNotifyUserEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Review\AddReviewFormRequest;
 use Illuminate\Http\Request;
@@ -34,6 +35,7 @@ class ReviewController extends Controller
     public function store(AddReviewFormRequest $request, $article_id)
     {
         $data = $request->validated();
+        $article = Article::find($article_id);
 
         $review = new Review;
         $review->article_id = $article_id;
@@ -42,6 +44,9 @@ class ReviewController extends Controller
         $review->comment = $data['comment'];
 
         $review->save();
+
+        // Dispatch the ArticleCreated event
+        event(new ReviewAddedAndNotifyUserEvent($article));
 
         return redirect('/review')->with('message','Review added successfully');
 

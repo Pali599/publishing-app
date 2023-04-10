@@ -55,7 +55,8 @@ class ArticleController extends Controller
         $article->created_by = Auth::user()->id;
         $article->save();
 
-        Event(new NotificationEmail($article));
+        // Dispatch the NotificationEmail event
+        event(new NotificationEmail($article));
 
         return redirect('/article')->with('message','Article added successfully');
 

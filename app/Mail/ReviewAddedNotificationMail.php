@@ -10,15 +10,15 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NotificationMail extends Mailable
+class ReviewAddedNotificationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+
+    public $article;
     /**
      * Create a new message instance.
      */
-    public $article;
-
     public function __construct(Article $article)
     {
         $this->article = $article;
@@ -26,8 +26,8 @@ class NotificationMail extends Mailable
 
     public function build()
     {
-        return $this->view('emails.email')
-            ->subject('New Article Created')
+        return $this->view('emails.reviewAdded')
+            ->subject('Article reviewed')
             ->with('article', $this->article);
     }
 }

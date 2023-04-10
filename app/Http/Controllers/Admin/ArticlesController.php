@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\NotificationEmail;
+use App\Events\ReviewerAddedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AddReviewerRequest;
 use App\Models\Article;
@@ -39,6 +41,9 @@ class ArticlesController extends Controller
         $article->published = $request->published == true ? 'yes':'no';
 
         $article->update();
+
+        // Dispatch the ArticleCreated event
+        event(new ReviewerAddedEvent($article));
 
         return redirect('admin/articles/assigned')->with('message','Article updated Successfully');
     }

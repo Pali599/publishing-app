@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 
 class NotificationEmailListener
 {
+    use InteractsWithQueue;
     /**
      * Create the event listener.
      */
@@ -22,9 +23,13 @@ class NotificationEmailListener
     /**
      * Handle the event.
      */
-    public function handle(NotificationEmail $event): void
+    public function handle(NotificationEmail $event)
     {
-        $adminEmails = User::where('role', 1)->pluck('email')->toArray();
-        Mail::to($adminEmails)->send(new NotificationMail($event->email));
+        $admins = User::where('role_id', '1')->get();
+        $article = $event->article;
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(new NotificationMail($article));
+        }
     }
 }
