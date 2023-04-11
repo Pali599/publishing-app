@@ -8,6 +8,7 @@ use App\Http\Requests\Article\ArticleFormRequest;
 use App\Http\Requests\Article\EditUserArticleFormRequest;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Contracts\EventDispatcher\Event;
@@ -65,7 +66,20 @@ class ArticleController extends Controller
     public function display($article_id)
     {
         $article = Article::find($article_id);
-        return view('article.display', compact('article'));
+
+        $review_int = Review::where('article_id', $article->id)
+                            ->whereHas('reviewer', function($query) {
+                                $query->where('type_id', 1);
+                            })
+                            ->first();
+
+        $review_ext = Review::where('article_id', $article->id)
+                            ->whereHas('reviewer', function($query) {
+                                $query->where('type_id', 2);
+                            })
+                            ->first();
+                            
+        return view('article.display', compact('article','review_int','review_ext'));
     }
 
     public function edit($article_id)

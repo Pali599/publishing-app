@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Events\ReviewAddedAndNotifyUserEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Review\AddReviewFormRequest;
+use App\Http\Requests\Review\EditReviewFormRequest;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Review;
@@ -22,7 +23,14 @@ class ReviewController extends Controller
     public function display($article_id)
     {
         $article = Article::find($article_id);
-        return view('reviews.display', compact('article'));
+
+        $userId = Auth::user()->id;
+
+        $review = Review::where('article_id', $article->id)
+                            ->where('reviewer_id', $userId)
+                            ->first();
+
+        return view('reviews.display', compact('article','review'));
     }
 
     public function add($article_id)
@@ -50,5 +58,25 @@ class ReviewController extends Controller
 
         return redirect('/review')->with('message','Review added successfully');
 
+    }
+
+    public function edit($review)
+    {
+        $review = Review::find($review);
+
+        return view('reviews.edit', compact('review'));
+    }
+
+    public function update(EditReviewFormRequest $request, $review_id)
+    {
+        $data = $request->validated();
+
+        $review = Review::find($review_id);
+        $review->result = $data['result'];
+        $review->comment = $data['comment'];
+
+        $review->update();
+
+        return redirect('/review/display-review/'.$review->article->id)->with('message','Review updated Successfully');
     }
 }

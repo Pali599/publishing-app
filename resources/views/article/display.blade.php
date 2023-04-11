@@ -1,4 +1,4 @@
-@section('title','Edit articles')
+@section('title','Edit article')
 
 <x-app-layout>
     <x-slot name="header">
@@ -7,60 +7,74 @@
         </h2>
     </x-slot>
 
-    <div class="container px-4">
-        <div class="mt-4">
-            <div class="card-body">
+    <div class="py-12">
+        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    <header>
+                        <div class="d-flex justify-content-center">
+                            <div class="flex items-center justify-end">
+                                <h1 class="my-2">{{ $article->title }}</h2>
+                                <a href="{{ url('article/edit-article/'.$article->id)}}">
+                                    <x-primary-button class="ml-4">
+                                    {{ __('Edit') }}
+                                    </x-primary-button>
+                                </a>
+                            </div>
+                        </div>
+                    </header>
+                    <hr class="my-2" />
+                    <h6>Author:</h6> 
+                    <p class="mb-3 fs-6">
+                        {{ $article->author->name }} <br>
+                        <i class="fs-6 fw-lighter">University: {{ $article->author->university }}</i><br>
+                        <i class="fs-6 fw-lighter"> Faculty: {{ $article->author->faculty }} </i>
+                    </p>
+                    <h6>Published:</h6>
+                    <p class="mb-3 fs-6">{{ $article->updated_at->format('d-m-Y') }}</p>
+                    <h6>Category:</h6>
+                    <p class="mb-3 fs-6">{{ $article->category->name }}</p>
+                    <h6>Keywords:</h6>
+                    <p class="mb-3 fs-6">{{ $article->keywords }}</p>
+                    <h6>Abstract:</h6>
+                    <p class="mb-3 fs-6">{{ $article->description }}</p>
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="{{ url('/download/' . $article->file) }}">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fas fa-file-pdf fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach($errors->all() as $errors)
-                            <div>{{$errors}}</div>
-                        @endforeach
-                    </div>
-                @endif
-                
-                <div class="container mt-4">
-                    <div class="row d-flex justify-content-evenly">
-                        <div class="col-md-5">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h1 class="mb-4">Article Details</h1>
-                                </div>
-                                <div class="card-body">
-                                    <h2>Title: {{ $article->title }}</h2>
-                                    <h3>Category: {{ $article->category->name }}</h3>
-                                    <h4>Abstract:</h4>
-                                    <p>{{ $article->description }}</p>
-                                    <h4>Keywords:</h4>
-                                    <p>{{ $article->keywords }}</p>
-                                    <p>Download the file: <a href="{{ url('/download/' . $article->file) }}" class="btn btn-primary" target="_blank">Download File</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h1 class="mb-4">Review Details</h1>
-                                </div>
-                                <div class="card-body">
-                                    <h2>Internal reviewer</h2>
-                                    <h3>Result of the review:</h3>
-                                    <h4>Comment:</h4>
-                                    <p>Article description goes here...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    <h1 class="my-2">Review from an internal reviewer</h2>
+                    <hr class="my-2" />
+                    @if($review_int)
+                        <h6>Result:</h6> 
+                        <p class="mb-3 fs-6">{{ $review_int->result }}</p>
+                        <h6>Comment:</h6>
+                        <p class="mb-3 fs-6">{{ $review_int->comment }}</p>
+                    @endif
                 </div>
-                <div class="row justify-content-md-center">
-                    <div class="col-md-auto">
-                        <a href="{{ url('article/edit-article/'.$article->id)}}" type="submit" class="btn btn-primary">Edit</a>
-                    </div>
-                    <div class="col-md-auto">
-                        <a href="{{url()->previous()}}" class="btn btn-secondary">Cancel</a>
-                    </div>
+            </div>
+
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    <h1 class="my-2">Review from an external reviewer</h2>
+                    <hr class="my-2" />
+                    @if($review_ext)
+                        <h6>Result:</h6> 
+                        <p class="mb-3 fs-6">{{ $review_ext->result }}</p>
+                        <h6>Comment:</h6>
+                        <p class="mb-3 fs-6">{{ $review_ext->comment }}</p>
+                    @endif
                 </div>
-            
             </div>
         </div>
     </div>    

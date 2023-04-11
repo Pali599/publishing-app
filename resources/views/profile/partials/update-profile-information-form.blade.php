@@ -48,9 +48,15 @@
         </div>
 
         <div>
-            <x-input-label for="departure" :value="__('Departure')" />
-            <x-text-input id="departure" name="departure" type="text" class="mt-1 block w-full" :value="old('departure', $user->departure)" required autofocus autocomplete="departure" />
-            <x-input-error class="mt-2" :messages="$errors->get('departure')" />
+            <x-input-label for="university" :value="__('University')" />
+            <x-text-input id="university" name="university" type="text" class="mt-1 block w-full" :value="old('university', $user->university)" required autofocus autocomplete="departure" />
+            <x-input-error class="mt-2" :messages="$errors->get('university')" />
+        </div>
+
+        <div>
+            <x-input-label for="faculty" :value="__('Faculty')" />
+            <x-text-input id="faculty" name="faculty" type="text" class="mt-1 block w-full" :value="old('faculty', $user->faculty)" required autofocus autocomplete="departure" />
+            <x-input-error class="mt-2" :messages="$errors->get('faculty')" />
         </div>
 
         <div class="flex items-center gap-4">

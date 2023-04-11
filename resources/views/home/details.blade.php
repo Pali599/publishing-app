@@ -14,7 +14,8 @@
                 <h6>Author:</h6> 
                 <p class="mt-2 fs-6">
                     {{ $article->author->name }} <br>
-                    <i class="fs-6 fw-lighter">University: Departure: {{ $article->author->departure }} </i>
+                    <i class="fs-6 fw-lighter">University: {{ $article->author->university }}</i><br>
+                    <i class="fs-6 fw-lighter"> Faculty: {{ $article->author->faculty }} </i>
                 </p>
                 <h6>Published:</h6>
                 <p class="mt-2 fs-6">{{ $article->updated_at->format('d-m-Y') }}</p>

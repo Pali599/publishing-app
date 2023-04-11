@@ -63,12 +63,6 @@
                             <x-dropdown-link :href="route('review.index')">
                                 {{ __('My reviews') }}
                             </x-dropdown-link>
-
-                            <x-dropdown-link :href="route('article.add')">
-                                {{ __('Add article') }}
-                            </x-dropdown-link>
-
-
                         </x-slot>
                     </x-dropdown>
                 </div>

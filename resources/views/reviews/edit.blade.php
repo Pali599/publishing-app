@@ -20,13 +20,14 @@
                         </div>
                     @endif
                     
-                    <form method="POST" action="{{ url('review/add-review/'.$article->id) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ url('review/update-review/'.$review->id) }}" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
 
                         <!-- Title -->
                         <div>
                             <x-input-label for="title" :value="__('Title')" />
-                            <p id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus autocomplete="title">{{ $article->title }}</p>
+                            <p id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus autocomplete="title">{{ $review->article->title }}</p>
                         </div>
 
                         <!-- Result -->
@@ -42,7 +43,7 @@
                         <!-- Comment -->
                         <div class="mt-4">
                             <x-input-label for="comment" :value="__('comment')" />
-                            <textarea id="comment" class="block mt-1 w-full" type="text" name="comment" :value="old('comment')" required autocomplete="result" ></textarea>
+                            <textarea id="comment" class="block mt-1 w-full" type="text" name="comment" :value="old('comment')" required autocomplete="result" >{{ $review->comment }}</textarea>
                         </div>
                         
                         <div class="d-flex justify-content-center">
@@ -52,7 +53,7 @@
                                 </x-primary-button>
                             </div>
                             <div class="flex items-center justify-end mt-4">
-                                <a href="{{ url('review/display-review/'.$article->id)}}">
+                                <a href="{{ url('review/display-review/'.$review->article->id)}}">
                                     <x-secondary-button class="ml-4">
                                         {{ __('Cancel') }}
                                     </x-secondary-button>

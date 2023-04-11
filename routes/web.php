@@ -83,7 +83,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
     Route::get('/review/display-review/{article_id}', [ReviewController::class, 'display'])->name('review.display');
     Route::get('/review/add-review/{article_id}', [ReviewController::class, 'add'])->name('review.add');
-    Route::post('/review/add-review/{article_id}', [ReviewController::class, 'store'])->name('review.add');
+    Route::post('/review/add-review/{article_id}', [ReviewController::class, 'store'])->name('review.store');
+    Route::get('/review/edit-review/{review_id}', [ReviewController::class, 'edit'])->name('review.edit');
+    Route::put('/review/update-review/{review_id}', [ReviewController::class, 'update'])->name('review.update');
 });
 
 
