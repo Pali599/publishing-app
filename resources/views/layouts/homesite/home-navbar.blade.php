@@ -13,10 +13,10 @@
                 @if (Route::has('login'))
                     @auth
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/article/add') }}">Add article</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/profile') }}">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/dashboard') }}">Dashboard</a></li>
                         <?php $role = Auth::user()->role_id ?>
                         @if($role == 1)
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/admin/dashboard') }}">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/admin/dashboard') }}">Admin Panel</a></li>
                         @endif
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

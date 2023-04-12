@@ -29,8 +29,6 @@
                         <i class="fs-6 fw-lighter">University: {{ $article->author->university }}</i><br>
                         <i class="fs-6 fw-lighter"> Faculty: {{ $article->author->faculty }} </i>
                     </p>
-                    <h6>Published:</h6>
-                    <p class="mb-3 fs-6">{{ $article->updated_at->format('d-m-Y') }}</p>
                     <h6>Category:</h6>
                     <p class="mb-3 fs-6">{{ $article->category->name }}</p>
                     <h6>Keywords:</h6>

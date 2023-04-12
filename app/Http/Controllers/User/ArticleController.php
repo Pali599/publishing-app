@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Events\ArticleEditedEvent;
 use App\Events\NotificationEmail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Article\ArticleFormRequest;
@@ -125,6 +126,9 @@ class ArticleController extends Controller
         $article->keywords = $data['keywords'];
 
         $article->update();
+
+        // Dispatch the ArticleCreated event
+        event(new ArticleEditedEvent($article));
 
         return redirect('article')->with('message','Article updated Successfully');
     }

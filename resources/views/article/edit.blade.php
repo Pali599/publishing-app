@@ -55,7 +55,7 @@
                         <div class="d-flex justify-content-center">
                             <div class="flex items-center justify-end mt-4">
                                 <x-primary-button class="ml-4" type="submit">
-                                    {{ __('Add') }}
+                                    {{ __('Edit') }}
                                 </x-primary-button>
                             </div>
                             <div class="flex items-center justify-end mt-4">
