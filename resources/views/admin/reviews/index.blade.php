@@ -19,8 +19,7 @@
                         <th>Type</th>
                         <th>Result</th>
                         <th>Comment</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Published</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +30,7 @@
                                 <td>{{ $item->reviewer->type->type }}</td>
                                 <td>{{ $item->result }}</td>
                                 <td>{{ $item->comment }}</td>
+                                <td>{{ $item->article->published }}</td>
                                 <td>
                                     <a href="{{ url('admin/edit-article/'.$item->article_id)}}" class="btn btn-success">Edit article</a>
                                 </td>

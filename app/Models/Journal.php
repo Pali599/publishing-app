@@ -15,6 +15,12 @@ class Journal extends Model
         'title',
         'version',
         'file',
-        'published'
+        'published',
+        'created_by'
     ];
+
+    public function author()
+    {
+        return $this->belongsTo(User::class,'created_by','id');
+    }
 }

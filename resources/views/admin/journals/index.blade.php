@@ -3,12 +3,12 @@
 @section('title','Admin Dashboard')
 
 @section('content')
-<div class="container-fluid px-4">
+<div class="container px-4">
 
     <div class="card mt-4">
         <div class="card-header">
             <h4>
-                Journals <a href="{{ url('article/add') }}" class="btn btn-primary btn-sm float-end">Add journal</a>
+                Journals <a href="{{ url('/admin/add-journal') }}" class="btn btn-primary btn-sm float-end">Add journal</a>
             </h4>
         </div>
         <div class="card-body">
@@ -20,37 +20,27 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Category</th>
-                        <th>Abstract</th>
+                        <th>Version</th>
                         <th>File</th>
-                        <th>Keywords</th>
-                        <th>Author</th>
-                        <th>Internal Reviewer</th>
-                        <th>External Reviewer</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Created by</th>
+                        <th>Published</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($article as $item)
-                        @if($item->reviewer_int != 0 && $item->reviewer_ext != 0)
-                            <tr>
-                                <td>{{ $item->title }}</td>
-                                <td>{{ $item->category->name }}</td>
-                                <td>{{ $item->description }}</td>
-                                <td>{{ $item->file }}</td>
-                                <td>{{ $item->keywords }}</td>
-                                <td>{{ $item->author->name}}</td>
-                                <td>{{ $item->internal->name}}</td>
-                                <td>{{ $item->external->name}}</td>
-                                <td>
-                                    <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Edit</a>
-                                </td>
-                                <td>
-                                    <a href="{{ url('admin/articles/delete-article/'.$item->id)}}" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                        @endif
+                    @foreach($journal as $item)
+                        <tr>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->version }}</td>
+                            <td>{{ $item->file }}</td>
+                            <td>{{ $item->author->name }}</td>
+                            <td>{{ $item->published }}</td>
+                            <td>
+                                <a href="{{ url('admin/edit-journal/'.$item->id)}}" class="btn btn-success">Edit</a>
+                            </td>
+                            <td>
+                                <a href="{{ url('admin/delete-article/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

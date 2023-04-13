@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Journal;
 
 class HomeSiteController extends Controller
 {
     public function index()
     {
         $article = Article::all();
-        return view('home.index', compact('article'));
+        $journal = Journal::get()->last();
+        return view('home.index', compact('article','journal'));
     }
 
     public function details($article_id)

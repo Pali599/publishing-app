@@ -50,6 +50,11 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('reviews', [AdminReviewController::class, 'index']);
 
     Route::get('journals', [AdminJournalController::class, 'index']);
+    Route::get('add-journal', [AdminJournalController::class, 'create']);
+    Route::post('add-journal', [AdminJournalController::class, 'store']);
+    Route::get('edit-journal/{journal_id}', [AdminJournalController::class, 'edit']);
+    Route::put('update-journal/{journal_id}', [AdminJournalController::class, 'update']);
+    Route::get('delete-journal/{journal_id}', [AdminJournalController::class, 'delete']);
 
 
     
