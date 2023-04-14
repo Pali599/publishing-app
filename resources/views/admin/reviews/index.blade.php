@@ -3,9 +3,14 @@
 @section('title','Admin Dashboard')
 
 @section('content')
-<div class="container-fluid px-4">
+<div class="container px-4">
 
-    <div class="card mt-4">
+    <div class="card mt-4 border border-1 shadow-lg rounded ">
+        <div class="card-header">
+            <h4>
+                View reviews
+            </h4>
+        </div>
         <div class="card-body">
             @if (session('message'))
                 <div class="alert alert-success">{{ session('message') }}</div>
@@ -36,6 +41,9 @@
                                 </td>
                                 <td>
                                     <a href="{{ url('admin/articles/delete-article/'.$item->article->id)}}" class="btn btn-danger">Delete article</a>
+                                </td>
+                                <td>
+                                    <a href="{{ url('admin/delete-review/'.$item->id)}}" class="btn btn-danger">Delete review</a>
                                 </td>
                             </tr>
                     @endforeach

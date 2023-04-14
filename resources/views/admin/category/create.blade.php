@@ -3,13 +3,10 @@
 @section('title','Category')
 
 @section('content')
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Add category</h1>
-    <div class="card mt-4">
-        <div class="card-header">
-            <h4 class="">Add category </h4>
-        </div>
-        <div class="card-body">
+<div class="container px-4 px-lg-5">
+    <div class="mt-4 row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7 border border-1 shadow-lg rounded">
+            <h1 class="mt-4">Create category</h1>
 
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -33,13 +30,18 @@
                     <label for="">Category slug</label>
                     <input type="text" name="slug" class="form-control">
                 </div>
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                <div class="row justify-content-md-center mb-3">
+                    <div class="col-md-auto">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    <div class="col-md-auto">
+                        <a href="{{url('/admin/category')}}" class="btn btn-secondary">Cancel</a>
+                    </div>
                 </div>
             </form>
         
         </div>
-
+    </div>
 </div>
 
 @endsection

@@ -16,4 +16,15 @@ class DownloadFileController extends Controller
             return abort(404, 'File not found');
         }
     }
+
+    public function downloadJournal($filename)
+    {
+        $file_path = public_path('uploads/journal/' . $filename);
+
+        if (file_exists($file_path)) {
+            return response()->download($file_path, $filename);
+        } else {
+            return abort(404, 'File not found');
+        }
+    }
 }

@@ -11,14 +11,14 @@
             <h2>Journal</h2>
             <hr class="mb-4" />
             <!-- Journal preview-->
-            @if($journal)
+            @if($journal->published == 'yes')
                 <div class="post-preview">
-                    <a href="{{ url('/home/details/' . $item->id) }}">
+                    <a href="#!">
                         <h4>{{ $journal->title }}</h4>
-                        <p class="post-meta">Version of the latest journal: {{ $journal->version }}</p>
+                        <p class="post-meta">Latest version of the journal: {{ $journal->version }}</p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <a href="{{ url('/download/' . $item->file) }}">
+                                <a href="{{ url('/download/journal/' . $journal->file) }}">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fas fa-file-pdf fa-stack-1x fa-inverse"></i>
@@ -35,7 +35,7 @@
             @endif
         </div>
 
-        <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="col-md-10 col-lg-8 col-xl-7 mt-5">
             <h2>Articles</h2>
             <hr class="mb-4" />
             <!-- Post preview-->

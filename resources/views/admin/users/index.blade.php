@@ -3,9 +3,9 @@
 @section('title','Users')
 
 @section('content')
-<div class="container-fluid px-4">
+<div class="container px-4">
 
-    <div class="card mt-4">
+    <div class="card mt-4 border border-1 shadow-lg rounded">
         <div class="card-header">
             <h4>
                 Users <a href="{{ url('admin/add-user') }}" class="btn btn-primary btn-sm float-end">Add user</a>
@@ -19,7 +19,6 @@
             <table class="table table-boardered">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>University</th>
@@ -33,7 +32,6 @@
                 <tbody>
                     @foreach($user as $item)
                     <tr>
-                        <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->university }}</td>

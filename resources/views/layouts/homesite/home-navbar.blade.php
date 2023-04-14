@@ -16,13 +16,15 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/dashboard') }}">Dashboard</a></li>
                         <?php $role = Auth::user()->role_id ?>
                         @if($role == 1)
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/admin/dashboard') }}">Admin Panel</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/admin/dashboard') }}">Admin Panel</a></li>
                         @endif
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                        <li class="nav-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
 
-                            <li class="nav-item"><a href="route('logout')" class="nav-link px-lg-3 py-3 py-lg-4" onclick="event.preventDefault(); this.closest('form').submit();">Log out</a></li>
-                        </form>
+                                <a href="{{ route('logout') }}" class="nav-link px-lg-3 py-3 py-lg-4" onclick="event.preventDefault(); this.closest('form').submit();">Log out</a>
+                            </form>
+                        </li>
                     @else
                         <li class="nav-item"><a href="{{ route('login') }}" class="nav-link px-lg-3 py-3 py-lg-4">Log in</a></li>
                         @if (Route::has('register'))

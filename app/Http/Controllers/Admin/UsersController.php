@@ -7,7 +7,10 @@ use App\Http\Requests\Admin\EditUserFormRequest;
 use App\Models\User;
 use App\Models\UserRole;
 use App\Models\UserType;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class UsersController extends Controller
 {
@@ -24,6 +27,38 @@ class UsersController extends Controller
         $type = UserType::all();
 
         return view('admin.users.edit', compact('user','role','type'));
+    }
+
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'university' => ['required', 'string', 'max:255'],
+            'faculty' => ['required', 'string', 'max:255'],
+            'type_id' => ['nullable', 'integer'],
+            'role_id' => ['nullable', 'integer'],
+            'password' => ['required', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'university' => $request->university,
+            'faculty' => $request->faculty,
+            'type_id' => $request->type_id,
+            'role_id' => $request->role_id,
+            'password' => Hash::make($request->password),
+        ]);
+
+        event(new Registered($user));
+
+        return redirect('admin/users')->with('message','User Added Successfully');
     }
 
     public function update(EditUserFormRequest $request, $user_id)

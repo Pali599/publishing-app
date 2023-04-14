@@ -34,6 +34,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('dashboard', [DashboardController::class, 'dashboard']);
 
     Route::get('users', [UsersController::class, 'index']);
+    Route::get('add-user', [UsersController::class, 'create']);
+    Route::post('add-user', [UsersController::class, 'store']);
     Route::get('edit-user/{user_id}', [UsersController::class, 'edit']);
     Route::put('update-user/{user_id}', [UsersController::class, 'update']);
     Route::get('delete-user/{user_id}', [UsersController::class, 'delete']);
@@ -48,6 +50,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('articles/published', [PublishedArticlesController::class, 'index']);
 
     Route::get('reviews', [AdminReviewController::class, 'index']);
+    Route::get('delete-review/{review_id}', [AdminReviewController::class, 'delete']);
 
     Route::get('journals', [AdminJournalController::class, 'index']);
     Route::get('add-journal', [AdminJournalController::class, 'create']);
@@ -97,6 +100,7 @@ Route::middleware('auth')->group(function () {
 // guest
 
 Route::get('/download/{filename}', [DownloadFileController::class, 'download']);
+Route::get('/download/journal/{filename}', [DownloadFileController::class, 'downloadJournal']);
 
 Route::prefix('')->group(function () {
     Route::get('/', [HomeSiteController::class, 'index']);

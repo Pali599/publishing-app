@@ -1,13 +1,12 @@
 @extends('layouts.master')
 
-@section('title','Article')
+@section('title','Edit journal')
 
 @section('content')
-<div class="container px-4">
-    <h1 class="mt-4">Edit article</h1>
-    <div class="card mt-4">
-        <div class="card-body">
-
+<div class="container px-4 px-lg-5">
+    <div class="mt-4 row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7 border border-1 shadow-lg rounded">
+            <h1 class="mt-4">Edit journal</h1>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $errors)
@@ -40,7 +39,7 @@
                     <label for="">Publish</label>
                     <input type="checkbox" name="published">
                 </div>
-                <div class="row justify-content-md-center">
+                <div class="row justify-content-md-center mb-3">
                     <div class="col-md-auto">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>

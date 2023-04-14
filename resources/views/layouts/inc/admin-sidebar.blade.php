@@ -15,7 +15,7 @@
                             </a>
                             <div class="collapse" id="collapseCategories" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ url('admin/add-category') }}">Add category</a>
+                                    <a class="nav-link" href="{{ url('admin/add-category') }}">Create category</a>
                                     <a class="nav-link" href="{{ url('admin/category') }}">View categories</a>
                                 </nav>
                             </div>
@@ -26,6 +26,7 @@
                             </a>
                             <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ url('admin/add-user') }}">Create user</a>
                                     <a class="nav-link" href="{{ url('admin/users') }}">Manage users</a>
                                 </nav>
                             </div>
@@ -58,7 +59,7 @@
                             </a>
                             <div class="collapse" id="collapseJournals" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ url('admin/add-journal') }}">Add journal</a>
+                                    <a class="nav-link" href="{{ url('admin/add-journal') }}">Create journal</a>
                                     <a class="nav-link" href="{{ url('admin/journals') }}">Manage journals</a>
                                 </nav>
                             </div>

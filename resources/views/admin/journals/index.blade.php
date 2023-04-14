@@ -5,7 +5,7 @@
 @section('content')
 <div class="container px-4">
 
-    <div class="card mt-4">
+    <div class="card mt-4 border border-1 shadow-lg rounded ">
         <div class="card-header">
             <h4>
                 Journals <a href="{{ url('/admin/add-journal') }}" class="btn btn-primary btn-sm float-end">Add journal</a>

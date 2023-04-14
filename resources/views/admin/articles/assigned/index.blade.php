@@ -3,9 +3,9 @@
 @section('title','Admin Dashboard')
 
 @section('content')
-<div class="container-fluid px-4">
+<div class="container px-4">
 
-    <div class="card mt-4">
+    <div class="card mt-4 border border-1 shadow-lg rounded">
         <div class="card-header">
             <h4>
                 Assigned Articles <a href="{{ url('article/add') }}" class="btn btn-primary btn-sm float-end">Add article</a>

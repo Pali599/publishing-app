@@ -3,9 +3,9 @@
 @section('title','Category')
 
 @section('content')
-<div class="container-fluid px-4">
+<div class="container px-4">
 
-    <div class="card mt-4">
+    <div class="card mt-4 border border-1 shadow-lg rounded">
         <div class="card-header">
             <h4>
                 View Category <a href="{{ url('admin/add-category') }}" class="btn btn-primary btn-sm float-end">Add category</a>

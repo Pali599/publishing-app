@@ -3,12 +3,12 @@
 @section('title','Admin Dashboard')
 
 @section('content')
-<div class="container-fluid px-4">
+<div class="container px-4">
 
-    <div class="card mt-4">
+    <div class="card mt-4 border border-1 shadow-lg rounded">
         <div class="card-header">
             <h4>
-                Assigned Articles <a href="{{ url('article/add') }}" class="btn btn-primary btn-sm float-end">Add article</a>
+                Published Articles <a href="{{ url('article/add') }}" class="btn btn-primary btn-sm float-end">Add article</a>
             </h4>
         </div>
         <div class="card-body">
@@ -22,8 +22,6 @@
                         <th>Title</th>
                         <th>Category</th>
                         <th>Author</th>
-                        <th>Internal Reviewer</th>
-                        <th>External Reviewer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,8 +31,6 @@
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->category->name }}</td>
                                 <td>{{ $item->author->name}}</td>
-                                <td>{{ $item->internal->name}}</td>
-                                <td>{{ $item->external->name}}</td>
                                 <td>
                                     <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Edit</a>
                                 </td>
