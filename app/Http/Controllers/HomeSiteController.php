@@ -15,6 +15,13 @@ class HomeSiteController extends Controller
         return view('home.index', compact('article','journal'));
     }
 
+    public function archive()
+    {
+        $article = Article::all();
+        $journal = Journal::get()->last();
+        return view('home.archive', compact('article','journal'));
+    }
+
     public function details($article_id)
     {
         $article = Article::find($article_id);

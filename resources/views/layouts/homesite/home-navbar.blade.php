@@ -8,22 +8,28 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('home/archive') }}">Archive</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('home/about') }}">About</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('home/contact') }}">Contact</a></li>
                 @if (Route::has('login'))
                     @auth
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/article/add') }}">Add article</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/dashboard') }}">Dashboard</a></li>
-                        <?php $role = Auth::user()->role_id ?>
-                        @if($role == 1)
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url('/admin/dashboard') }}">Admin Panel</a></li>
-                        @endif
-                        <li class="nav-item">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end ms-auto py-4 py-lg-0" aria-labelledby="navbarDropdown">
+                                <li class="dropdown-item"><a href="{{ url('/article/add') }}">Add article</a></li>
+                                <li class="dropdown-item"><a href="{{ url('/profile') }}">Profile</a></li>
+                                <?php $role = Auth::user()->role_id ?>
+                                @if($role == 1)
+                                    <li class="dropdown-item"><a href="{{ url('/admin/dashboard') }}">Admin Panel</a></li>
+                                @endif
+                                <li class="dropdown-item">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
 
-                                <a href="{{ route('logout') }}" class="nav-link px-lg-3 py-3 py-lg-4" onclick="event.preventDefault(); this.closest('form').submit();">Log out</a>
-                            </form>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Log out</a>
+                                    </form>
+                                </li>
+                            </ul>
                         </li>
                     @else
                         <li class="nav-item"><a href="{{ route('login') }}" class="nav-link px-lg-3 py-3 py-lg-4">Log in</a></li>

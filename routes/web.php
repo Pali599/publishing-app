@@ -31,7 +31,7 @@ use App\Http\Controllers\Admin\PublishedArticlesController;
 // admin
 
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
-    Route::get('dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::get('users', [UsersController::class, 'index']);
     Route::get('add-user', [UsersController::class, 'create']);
@@ -104,6 +104,7 @@ Route::get('/download/journal/{filename}', [DownloadFileController::class, 'down
 
 Route::prefix('')->group(function () {
     Route::get('/', [HomeSiteController::class, 'index']);
+    Route::get('/home/archive', [HomeSiteController::class, 'archive']);
     Route::get('/home/about', [HomeSiteController::class, 'about']);
     Route::get('/home/contact', [HomeSiteController::class, 'contact']);
     Route::get('/home/details/{article_id}', [HomeSiteController::class, 'details']);
