@@ -60,9 +60,9 @@ class ReviewController extends Controller
 
     }
 
-    public function edit($review)
+    public function edit($review_id)
     {
-        $review = Review::find($review);
+        $review = Review::find($review_id);
 
         return view('reviews.edit', compact('review'));
     }
@@ -70,12 +70,17 @@ class ReviewController extends Controller
     public function update(EditReviewFormRequest $request, $review_id)
     {
         $data = $request->validated();
-
+        
         $review = Review::find($review_id);
         $review->result = $data['result'];
         $review->comment = $data['comment'];
 
         $review->update();
+
+        $article = Article::find($review->article_id);
+
+        // Dispatch the ArticleCreated event
+        event(new ReviewAddedAndNotifyUserEvent($article));
 
         return redirect('/review/display-review/'.$review->article->id)->with('message','Review updated Successfully');
     }

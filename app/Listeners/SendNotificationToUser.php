@@ -29,5 +29,11 @@ class SendNotificationToUser
         $author = User::where('id', $createdBy)->first();
 
         Mail::to($author->email)->send(new ReviewAddedNotificationMail($event->article));
+        
+        $adminUsers = User::where('role_id', 1)->get(); // assuming role_id 1 is for admin users
+        foreach ($adminUsers as $adminUser) {
+            Mail::to($adminUser->email)->send(new ReviewAddedNotificationMail($event->article));
     }
+    }
+
 }
