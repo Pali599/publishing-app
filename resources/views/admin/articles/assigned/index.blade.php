@@ -20,10 +20,10 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Category</th>
                         <th>Author</th>
                         <th>Internal Reviewer</th>
                         <th>External Reviewer</th>
+                        <th>Optional Reviewer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,10 +31,14 @@
                         @if($item->reviewer_int != 0 && $item->reviewer_ext != 0 && $item->published != 'yes')
                             <tr>
                                 <td>{{ $item->title }}</td>
-                                <td>{{ $item->category->name }}</td>
                                 <td>{{ $item->author->name}}</td>
                                 <td>{{ $item->internal->name}}</td>
                                 <td>{{ $item->external->name}}</td>
+                                @if($item->reviewer_opt == 0)
+                                    <td>Not assigned</td>
+                                @else
+                                    <td>{{ $item->reviewerOpt->name}}</td>
+                                @endif
                                 <td>
                                     <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Edit</a>
                                 </td>

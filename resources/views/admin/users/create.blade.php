@@ -35,10 +35,11 @@
                     <input type="text" name="faculty" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="">Reviewer type</label>
+                    <label for="">Type</label>
                     <select id="type_id" class="form-select" type="text" name="type_id" required autocomplete="title">
-                            <option value="1">Internal</option>
-                            <option value="2">External</option>
+                            <option value="3">Author</option>
+                            <option value="1">Internal reviewer</option>
+                            <option value="2">External reviewer</option>
                     </select>
                 </div>
                 <div class="mb-3">

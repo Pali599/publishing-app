@@ -26,6 +26,7 @@ class AddReviewerRequest extends FormRequest
             'category_id' => ['required','integer'],
             'reviewer_int' => ['required','string'],
             'reviewer_ext' => ['required','string'],
+            'reviewer_opt' => ['string'],
             'published' => ['nullable'],
             
         ];

@@ -37,7 +37,7 @@
                     <input type="text" name="faculty" value="{{ $user->faculty }}" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="">Reviewer type</label>
+                    <label for="">Type</label>
                     <select id="type_id" class="form-select" type="text" name="type_id" required autocomplete="title">
                         @foreach($type as $typeitem)
                             <option value="{{ $typeitem->id }}" {{ $user->type_id == $typeitem->id ? 'selected' : '' }}>{{ $typeitem->type }}</option>

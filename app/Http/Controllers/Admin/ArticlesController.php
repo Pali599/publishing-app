@@ -38,6 +38,7 @@ class ArticlesController extends Controller
         $article->category_id = $data['category_id'];
         $article->reviewer_int = $data['reviewer_int'];
         $article->reviewer_ext = $data['reviewer_ext'];
+        $article->reviewer_opt = $data['reviewer_opt'];
         $article->published = $request->published == true ? 'yes':'no';
 
         $article->update();

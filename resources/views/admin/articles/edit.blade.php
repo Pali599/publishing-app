@@ -56,7 +56,7 @@
                     <label for="">Internal reviewer</label>
                     <select id="reviewer_int" class="form-select" type="text" name="reviewer_int" required autocomplete="title">
                         @foreach($user as $useritem)
-                            @if($useritem->type->type == 'internal')
+                            @if($useritem->type->type == 'internal reviewer')
                             <option value="{{ $useritem->id }}" {{ $article->reviewer_int == $useritem->id ? 'selected' : '' }}>{{ $useritem->name }}</option>
                             @endif
                         @endforeach
@@ -66,9 +66,17 @@
                     <label for="">External Reviewer</label>
                     <select id="reviewer_ext" class="form-select" type="text" name="reviewer_ext" required autocomplete="title">
                         @foreach($user as $useritem)
-                            @if($useritem->type->type == 'external')
+                            @if($useritem->type->type == 'external reviewer')
                                 <option value="{{ $useritem->id }}" {{ $article->reviewer_ext == $useritem->id ? 'selected' : '' }}>{{ $useritem->name }}</option>
                             @endif
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="">Optional Reviewer</label>
+                    <select id="reviewer_opt" class="form-select" type="text" name="reviewer_opt" required autocomplete="title">
+                        @foreach($user as $useritem)
+                            <option value="{{ $useritem->id }}" {{ $article->reviewer_opt == $useritem->id ? 'selected' : '' }}>{{ $useritem->name }} -> {{ $useritem->type->type }}</option>
                         @endforeach
                     </select>
                 </div>

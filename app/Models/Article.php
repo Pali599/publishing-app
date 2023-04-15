@@ -22,6 +22,7 @@ class Article extends Model
         'created_by',
         'reviewer_int',
         'reviewer_ext',
+        'reviewer_opt',
         'published',
     ];
 
@@ -44,4 +45,10 @@ class Article extends Model
     {
         return $this->belongsTo(User::class,'reviewer_ext','id');
     }
+
+    public function reviewerOpt()
+    {
+        return $this->belongsTo(User::class,'reviewer_opt','id');
+    }
+
 }
