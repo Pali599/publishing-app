@@ -19,6 +19,7 @@ class Article extends Model
         'description',
         'file',
         'keywords',
+        'letter',
         'created_by',
         'reviewer_int',
         'reviewer_ext',
@@ -50,5 +51,16 @@ class Article extends Model
     {
         return $this->belongsTo(User::class,'reviewer_opt','id');
     }
+
+    public function suggestedReviewers()
+    {
+        return $this->belongsToMany(User::class, 'article_reviewers');
+    }
+
+    public function unwantedReviewers()
+    {
+        return $this->belongsToMany(User::class, 'article_unwanted_reviewers');
+    }
+
 
 }

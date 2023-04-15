@@ -31,7 +31,8 @@ class ArticleController extends Controller
     public function add()
     {
         $category = Category::get();
-        return view('article.add', compact('category'));
+        $user = User::get();
+        return view('article.add', compact('category','user'));
     }
 
     public function store(ArticleFormRequest $request)
@@ -51,11 +52,27 @@ class ArticleController extends Controller
             $filename = $originalName . '_' . $uniqueId . '.' . $extension;
             $file->move('uploads/article/', $filename);
             $article->file = $filename;
-        }  
+        }
         
         $article->keywords = $data['keywords'];
+
+        if ($request->hasFile('letter')) {
+            $letter = $request->file('letter');
+            $extension = $letter->getClientOriginalExtension();
+            $originalName = pathinfo($letter->getClientOriginalName(), PATHINFO_FILENAME);
+            $uniqueId = (string) Str::uuid();
+            $lettername = $originalName . '_' . $uniqueId . '.' . $extension;
+            $letter->move('uploads/cover_letter/', $lettername);
+            $article->letter = $lettername;
+        }  
         $article->created_by = Auth::user()->id;
         $article->save();
+
+        $suggestedReviewers = $request->input('suggested_reviewers');
+        $article->suggestedReviewers()->attach($suggestedReviewers);
+
+        $unwantedReviewers = $request->input('unwanted_reviewers');
+        $article->unwantedReviewers()->attach($unwantedReviewers);
 
         // Dispatch the NotificationEmail event
         event(new NotificationEmail($article));

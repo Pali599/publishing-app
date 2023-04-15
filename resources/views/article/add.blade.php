@@ -63,8 +63,36 @@
                         <div id="step-2" style="display: none;">
                             <!-- Cover letter -->
                             <div class="mt-4">
-                                <x-input-label for="cover_letter" :value="__('Cover letter')" />
-                                <x-text-input id="cover_letter" class="block mt-1 w-full" type="file" name="cover_letter" :value="old('cover_letter')" required autocomplete="title" />
+                                <x-input-label for="letter" :value="__('Cover letter')" />
+                                <x-text-input id="letter" class="block mt-1 w-full" type="file" name="letter" :value="old('letter')" required autocomplete="title" />
+                            </div>
+                            <div class="mt-4">
+                                <x-input-label for="suggested_reviewers" :value="__('Suggested reviewers')" />
+                                <select id="suggested_reviewers" class="block mt-1 w-full" name="suggested_reviewers[]" multiple required>
+                                    @foreach($user as $useritem)
+                                        @if($useritem->type_id != 3 && $useritem->role_id != 1)
+                                            <option value="{{ $useritem->id}}">{{ $useritem->name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-4">
+                                <x-input-label for="selected_reviewers" :value="__('Selected reviewers:')" />
+                                <div id="selected_reviewers" class="block mt-1 w-full"></div>
+                            </div>
+                            <div class="mt-4">
+                                <x-input-label for="unwanted_reviewers" :value="__('Unwanted reviewers')" />
+                                <select id="unwanted_reviewers" class="block mt-1 w-full" name="unwanted_reviewers[]" multiple>
+                                    @foreach($user as $useritem)
+                                        @if($useritem->type_id != 3 && $useritem->role_id != 1)
+                                            <option value="{{ $useritem->id}}">{{ $useritem->name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-4">
+                                <x-input-label for="selected_unwanted_reviewers" :value="__('Selected unwanted reviewers:')" />
+                                <div id="selected_unwanted_reviewers" class="block mt-1 w-full"></div>
                             </div>
                         </div>
 
@@ -97,7 +125,8 @@
             </div>
         </div>
     </div>
-    
+
     <script src="{{ asset('assets/js/article-form.js') }}"></script>
+    <script src="{{ asset('assets/js/article-form-reviewers.js') }}"></script>
 
 </x-app-layout>
