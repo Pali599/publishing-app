@@ -112,6 +112,16 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="{{ url('/generate-pdf/' . $review->id) }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-file-pdf fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
                     @else
                         <p class="mb-3 fs-6">There is no review to display.</p>
                     @endif

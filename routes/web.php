@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminReviewController;
 use App\Http\Controllers\Admin\AdminJournalController;
 use App\Http\Controllers\DownloadFileController;
 use App\Http\Controllers\Admin\PublishedArticlesController;
+use App\Http\Controllers\GeneratePDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +103,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/download/{filename}', [DownloadFileController::class, 'download']);
 Route::get('/download/journal/{filename}', [DownloadFileController::class, 'downloadJournal']);
 Route::get('/download/letter/{filename}', [DownloadFileController::class, 'downloadLetter']);
+
+Route::get('/generate-pdf/{review_id}', [GeneratePDFController::class, 'generate']);
 
 Route::prefix('')->group(function () {
     Route::get('/', [HomeSiteController::class, 'index']);
