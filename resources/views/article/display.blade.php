@@ -74,8 +74,44 @@
                     @if($review_int)
                         <h6>Result:</h6> 
                         <p class="mb-3 fs-6">{{ $review_int->result }}</p>
-                        <h6>Comment:</h6>
+                        <h6>General Comment:</h6>
                         <p class="mb-3 fs-6">{{ $review_int->comment }}</p>
+                        <h6>How to Improve:</h6>
+                        <p class="mb-3 fs-6">{{ $review_int->improve }}</p>
+                        <h6>Comment to Author:</h6>
+                        <p class="mb-3 fs-6">{{ $review_int->comment_author }}</p>
+                        <h6>Grades to Properties:</h6>
+                        <p class="mb-3 fs-6">(1 = Excellent) (2 = Good) (3 = Fair) (4 = Poor) (5 = Bad)</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">Originality</td>
+                                    <td>{{ $review_int->originality }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Contribution to the Field</td>
+                                    <td>{{ $review_int->contribution }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Technical Quality</td>
+                                    <td>{{ $review_int->technical_quality }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Clarity of Presentation</td>
+                                    <td>{{ $review_int->presentation_clarity }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Depth of Research</td>
+                                    <td>{{ $review_int->research_depth }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     @else
                         <p class="mb-3 fs-6">No review to this article so far.</p>
                     @endif
@@ -89,8 +125,44 @@
                     @if($review_ext)
                         <h6>Result:</h6> 
                         <p class="mb-3 fs-6">{{ $review_ext->result }}</p>
-                        <h6>Comment:</h6>
+                        <h6>General Comment:</h6>
                         <p class="mb-3 fs-6">{{ $review_ext->comment }}</p>
+                        <h6>How to Improve:</h6>
+                        <p class="mb-3 fs-6">{{ $review_ext->improve }}</p>
+                        <h6>Comment to Author:</h6>
+                        <p class="mb-3 fs-6">{{ $review_ext->comment_author }}</p>
+                        <h6>Grades to Properties:</h6>
+                        <p class="mb-3 fs-6">(1 = Excellent) (2 = Good) (3 = Fair) (4 = Poor) (5 = Bad)</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">Originality</td>
+                                    <td>{{ $review_ext->originality }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Contribution to the Field</td>
+                                    <td>{{ $review_ext->contribution }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Technical Quality</td>
+                                    <td>{{ $review_ext->technical_quality }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Clarity of Presentation</td>
+                                    <td>{{ $review_ext->presentation_clarity }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Depth of Research</td>
+                                    <td>{{ $review_ext->research_depth }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     @else
                         <p class="mb-3 fs-6">No review to this article so far.</p>
                     @endif

@@ -18,6 +18,13 @@ class Review extends Model
         'reviewer_id',
         'result',
         'comment',
+        'improve',
+        'comment_author',
+        'originality',
+        'contribution',
+        'technical_quality',
+        'presentation_clarity',
+        'research_depth',
     ];
 
     public function article()

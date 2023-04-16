@@ -29,8 +29,10 @@ class ArticlesController extends Controller
         $article = Article::find($article_id);
         $category = Category::all();
         $user = User::all();
+        $suggested_reviewers = $article->suggestedReviewers;
+        $unwanted_reviewers = $article->unwantedReviewers;
 
-        return view('admin.articles.edit', compact('user','article','category'));
+        return view('admin.articles.edit', compact('user','article','category','suggested_reviewers','unwanted_reviewers'));
     }
 
     public function update(AddReviewerRequest $request, $article_id)

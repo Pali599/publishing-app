@@ -50,6 +50,13 @@ class ReviewController extends Controller
         $review->reviewer_id = Auth::user()->id;
         $review->result = $data['result'];
         $review->comment = $data['comment'];
+        $review->improve = $data['improve'];
+        $review->comment_author = $data['comment_author'];
+        $review->originality = $data['originality'];
+        $review->contribution = $data['contribution'];
+        $review->technical_quality = $data['technical_quality'];
+        $review->presentation_clarity = $data['presentation_clarity'];
+        $review->research_depth = $data['research_depth'];
 
         $review->save();
 
@@ -74,6 +81,13 @@ class ReviewController extends Controller
         $review = Review::find($review_id);
         $review->result = $data['result'];
         $review->comment = $data['comment'];
+        $review->improve = $data['improve'];
+        $review->comment_author = $data['comment_author'];
+        $review->originality = $data['originality'];
+        $review->contribution = $data['contribution'];
+        $review->technical_quality = $data['technical_quality'];
+        $review->presentation_clarity = $data['presentation_clarity'];
+        $review->research_depth = $data['research_depth'];
 
         $review->update();
 

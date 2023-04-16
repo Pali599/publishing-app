@@ -27,7 +27,7 @@ nextButton.addEventListener('click', function() {
         backButton.style.display = 'block';
         submitButton.style.display = 'block';
     } else {
-        alert('All fields are required. Please fill in all fields in order to move to the next step.');
+        alert('Some fields are required. Please fill in all required fields in order to move to the next step.');
     }
 });
 

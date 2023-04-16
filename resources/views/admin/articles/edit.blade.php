@@ -25,6 +25,10 @@
                     <p type="text" name="title" class="form-control">{{ $article->title }}</p>
                 </div>
                 <div class="mb-3">
+                    <label for="">Author</label>
+                    <p type="text" name="keywords" class="form-control">{{ $article->author->name }}</p>
+                </div>
+                <div class="mb-3">
                     <label for="">Category</label>
                     <select id="category" class="form-select" type="text" name="category_id" :value="old('category')" required autocomplete="title">
                         @foreach($category as $cateitem)
@@ -49,8 +53,20 @@
                     <p type="text" name="keywords" class="form-control">{{ $article->keywords }}</p>
                 </div>
                 <div class="mb-3">
-                    <label for="">Author</label>
-                    <p type="text" name="keywords" class="form-control">{{ $article->author->name }}</p>
+                    <label for="">Suggested reviewers</label>
+                    <p type="text" class="form-control">
+                        @foreach ($suggested_reviewers as $suggested)
+                            {{ $suggested->name}},
+                        @endforeach
+                    </p>
+                </div>
+                <div class="mb-3">
+                    <label for="">Unwanted reviewers</label>
+                    <p type="text" class="form-control">
+                        @foreach ($unwanted_reviewers as $unwanted)
+                            {{ $unwanted->name}},
+                        @endforeach
+                    </p>
                 </div>
                 <div class="mb-3">
                     <label for="">Internal reviewer</label>
@@ -75,9 +91,15 @@
                 <div class="mb-3">
                     <label for="">Optional Reviewer</label>
                     <select id="reviewer_opt" class="form-select" type="text" name="reviewer_opt" required autocomplete="title">
+                        @if($article->reviewer_opt == 0)
+                            <option>None</option>
+                        @endif
                         @foreach($user as $useritem)
                             <option value="{{ $useritem->id }}" {{ $article->reviewer_opt == $useritem->id ? 'selected' : '' }}>{{ $useritem->name }} -> {{ $useritem->type->type }}</option>
                         @endforeach
+                        @if($article->reviewer_opt != 0)
+                            <option>None</option>
+                        @endif
                     </select>
                 </div>
                 <div class="mb-3">

@@ -23,7 +23,14 @@ class EditReviewFormRequest extends FormRequest
     {
         $rules = [
             'result' => 'required|string',
-            'comment' => 'required|string|max:255',
+            'comment' => 'string|max:255',
+            'improve' => 'string|max:255',
+            'comment_author' => 'string|max:255',
+            'originality' => 'integer',
+            'contribution' => 'integer',
+            'technical_quality' => 'integer',
+            'presentation_clarity' => 'integer',
+            'research_depth' => 'integer',
         ];
 
         return $rules;
