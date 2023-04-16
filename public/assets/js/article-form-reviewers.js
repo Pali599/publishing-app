@@ -1,5 +1,5 @@
-const suggestedReviewerElement = document.getElementById('suggested_reviewer');
-const unwantedReviewerElement = document.getElementById('unwanted_reviewer');
+const suggestedReviewerElement = document.getElementById('suggested_reviewers');
+const unwantedReviewerElement = document.getElementById('unwanted_reviewers');
 const selectedReviewersElement = document.getElementById('selected_reviewers');
 const selectedUnwantedReviewersElement = document.getElementById('selected_unwanted_reviewers');
 

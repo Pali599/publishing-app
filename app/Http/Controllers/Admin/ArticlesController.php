@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Article\ArticleFormRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class ArticlesController extends Controller
 {
@@ -54,6 +57,16 @@ class ArticlesController extends Controller
         $article = Article::find($article_id);
         if($article)
         {
+            $oldFile = $article->file;
+            if ($oldFile) {
+                File::delete('uploads/article/' . $oldFile);
+            }
+
+            $oldLetter = $article->letter;
+            if ($oldLetter) {
+                File::delete('uploads/cover_letter/' . $oldLetter);
+            }
+
             $article->delete();
             return redirect('admin/articles')->with('message','Article deleted Successfully');
         }

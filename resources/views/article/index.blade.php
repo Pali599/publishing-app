@@ -40,7 +40,7 @@
                                         <td>
                                             <a href="{{ url('article/delete-article/'.$item->id)}}">
                                                 <x-secondary-button class="ml-4">
-                                                    {{ __('Cancel') }}
+                                                    {{ __('Delete') }}
                                                 </x-secondary-button>
                                             </a>
                                         </td>

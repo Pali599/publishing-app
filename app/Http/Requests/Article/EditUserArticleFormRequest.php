@@ -30,6 +30,9 @@ class EditUserArticleFormRequest extends FormRequest
             'description' => 'required',
             'file' => "{$fileRule}|mimes:pdf,doc,docx|max:2048",
             'keywords' => 'required',
+            'letter' => 'mimes:pdf,doc,docx|max:2048',
+            'suggested_reviewers.*' => 'string',
+            'unwanted_reviewers.*' => 'string',
         ];
 
         return $rules;

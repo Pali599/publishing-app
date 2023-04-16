@@ -27,13 +27,13 @@
                             <!-- Title -->
                             <div>
                                 <x-input-label for="title" :value="__('Title')" />
-                                <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus autocomplete="title" />
+                                <input id="title" class="block mt-1 w-full form-control" type="text" name="title" :value="old('title')" required autofocus autocomplete="title" />
                             </div>
 
                             <!-- Category -->
                             <div class="mt-4">
                                 <x-input-label for="category" :value="__('Category')" />
-                                <select id="category" class="block mt-1 w-full" type="text" name="category_id" :value="old('category')" required autocomplete="title">
+                                <select id="category" class="block mt-1 w-full form-control" type="text" name="category_id" :value="old('category')" required autocomplete="title">
                                     @foreach($category as $cateitem)
                                         <option value="{{ $cateitem->id}}">{{ $cateitem->name}}</option>
                                     @endforeach
@@ -43,32 +43,32 @@
                             <!-- Description -->
                             <div class="mt-4">
                                 <x-input-label for="description" :value="__('Abstract')" />
-                                <textarea id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autocomplete="title" ></textarea>
+                                <textarea id="description" class="block mt-1 w-full form-control" type="text" name="description" :value="old('description')" required autocomplete="title" ></textarea>
                             </div>
 
                             <!-- File -->
                             <div class="mt-4">
                                 <x-input-label for="file" :value="__('File')" />
-                                <x-text-input id="file" class="block mt-1 w-full" type="file" name="file" :value="old('file')" required autocomplete="title" />
+                                <input id="file" class="block mt-1 w-full form-control" type="file" name="file" :value="old('file')" required autocomplete="title" />
                             </div>
                             
 
                             <!-- Keywords-->
                             <div class="mt-4">
                                 <x-input-label for="keywords" :value="__('Keywords')" />
-                                <x-text-input id="keywords" class="block mt-1 w-full" type="text" name="keywords" :value="old('keywords')" required autocomplete="title" />
+                                <input id="keywords" class="block mt-1 w-full form-control" type="text" name="keywords" :value="old('keywords')" required autocomplete="title" />
                             </div>
                         </div>
 
                         <div id="step-2" style="display: none;">
                             <!-- Cover letter -->
                             <div class="mt-4">
-                                <x-input-label for="letter" :value="__('Cover letter')" />
-                                <x-text-input id="letter" class="block mt-1 w-full" type="file" name="letter" :value="old('letter')" required autocomplete="title" />
+                                <x-input-label for="letter" :value="__('Cover letter (optional)')" />
+                                <input id="letter" class="block mt-1 w-full form-control" type="file" name="letter" :value="old('letter')" autocomplete="title" />
                             </div>
                             <div class="mt-4">
                                 <x-input-label for="suggested_reviewers" :value="__('Suggested reviewers')" />
-                                <select id="suggested_reviewers" class="block mt-1 w-full" name="suggested_reviewers[]" multiple required>
+                                <select id="suggested_reviewers" class="block mt-1 w-full form-control" name="suggested_reviewers[]" multiple required>
                                     @foreach($user as $useritem)
                                         @if($useritem->type_id != 3 && $useritem->role_id != 1)
                                             <option value="{{ $useritem->id}}">{{ $useritem->name}}</option>
@@ -81,8 +81,8 @@
                                 <div id="selected_reviewers" class="block mt-1 w-full"></div>
                             </div>
                             <div class="mt-4">
-                                <x-input-label for="unwanted_reviewers" :value="__('Unwanted reviewers')" />
-                                <select id="unwanted_reviewers" class="block mt-1 w-full" name="unwanted_reviewers[]" multiple>
+                                <x-input-label for="unwanted_reviewers" :value="__('Unwanted reviewers (optional)')" />
+                                <select id="unwanted_reviewers" class="block mt-1 w-full form-control" name="unwanted_reviewers[]" multiple>
                                     @foreach($user as $useritem)
                                         @if($useritem->type_id != 3 && $useritem->role_id != 1)
                                             <option value="{{ $useritem->id}}">{{ $useritem->name}}</option>

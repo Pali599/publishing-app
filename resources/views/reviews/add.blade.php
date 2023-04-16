@@ -33,9 +33,10 @@
                         <div class="mt-4">
                             <x-input-label for="result" :value="__('Result')" />
                             <select id="result" class="block mt-1 w-full" type="text" name="result" :value="old('result')" required autocomplete="result">
-                                    <option value="rejected">Reject - the article doesn't meet required quality and accuracy.</option>
-                                    <option value="returned">Return - the article needs some improvements </option>
-                                    <option value="accepted">Accept - the article meets all the requirements and is ready to be published.</option>
+                                <option value="accepted">Accept as it is</option>  
+                                <option value="returned - minor revision">Return - Requires Minor Revision</option>
+                                <option value="returned - major revision">Return - Requires Major Revision</option>
+                                <option value="rejected">Reject</option>
                             </select>
                         </div>
 

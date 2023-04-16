@@ -36,6 +36,24 @@
                     <p class="mb-3 fs-6">{{ $article->keywords }}</p>
                     <h6>Abstract:</h6>
                     <p class="mb-3 fs-6">{{ $article->description }}</p>
+                    <h6>Cover letter:</h6>
+                    <a href="{{ url('/download/letter/' . $article->letter) }}">
+                        <x-primary-button class="mb-2">
+                            {{ __('Download') }}
+                        </x-primary-button>
+                    </a>
+                    <h6>Suggested reviewers:</h6>
+                    <p class="mb-3 fs-6">
+                        @foreach ($suggested_reviewers as $suggested)
+                            {{ $suggested->name}},
+                        @endforeach
+                    </p>
+                    <h6>Unwanted reviewers:</h6>
+                    <p class="mb-3 fs-6">
+                        @foreach ($unwanted_reviewers as $unwanted)
+                            {{ $unwanted->name}},
+                        @endforeach
+                    </p>
                     <ul class="list-inline text-center">
                         <li class="list-inline-item">
                             <a href="{{ url('/download/' . $article->file) }}">
@@ -58,6 +76,8 @@
                         <p class="mb-3 fs-6">{{ $review_int->result }}</p>
                         <h6>Comment:</h6>
                         <p class="mb-3 fs-6">{{ $review_int->comment }}</p>
+                    @else
+                        <p class="mb-3 fs-6">No review to this article so far.</p>
                     @endif
                 </div>
             </div>
@@ -71,6 +91,8 @@
                         <p class="mb-3 fs-6">{{ $review_ext->result }}</p>
                         <h6>Comment:</h6>
                         <p class="mb-3 fs-6">{{ $review_ext->comment }}</p>
+                    @else
+                        <p class="mb-3 fs-6">No review to this article so far.</p>
                     @endif
                 </div>
             </div>

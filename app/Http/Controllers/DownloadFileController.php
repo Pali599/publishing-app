@@ -27,4 +27,15 @@ class DownloadFileController extends Controller
             return abort(404, 'File not found');
         }
     }
+
+    public function downloadLetter($filename)
+    {
+        $file_path = public_path('uploads/cover_letter/' . $filename);
+
+        if (file_exists($file_path)) {
+            return response()->download($file_path, $filename);
+        } else {
+            return abort(404, 'File not found');
+        }
+    }
 }

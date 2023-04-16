@@ -101,6 +101,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/download/{filename}', [DownloadFileController::class, 'download']);
 Route::get('/download/journal/{filename}', [DownloadFileController::class, 'downloadJournal']);
+Route::get('/download/letter/{filename}', [DownloadFileController::class, 'downloadLetter']);
 
 Route::prefix('')->group(function () {
     Route::get('/', [HomeSiteController::class, 'index']);
