@@ -16,7 +16,7 @@
                             <div class="collapse" id="collapseCategories" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{ url('admin/add-category') }}">Create category</a>
-                                    <a class="nav-link" href="{{ url('admin/category') }}">View categories</a>
+                                    <a class="nav-link" href="{{ url('admin/category') }}">Manage categories</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">

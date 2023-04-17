@@ -43,22 +43,17 @@
                                     <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Edit</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/articles/delete-article/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ url('admin/articles/delete-article/'.$item->id)}}" class="btn btn-danger" onclick="confirmDelete(event, '{{ url('admin/articles/delete-article/'.$item->id) }}')">Delete</a>
                                 </td>
                             </tr>
                         @endif
                     @endforeach
                 </tbody>
             </table>
-
-
-
-
-
         </div>
     </div>
-
-    
 </div>
+
+<script src="{{ asset('assets/js/delete-warning.js') }}"></script>
 
 @endsection

@@ -113,6 +113,12 @@ class AdminJournalController extends Controller
         $journal = Journal::find($journal_id);
         if($journal)
         {
+            $oldFile = $journal->file;
+            Log::info("old file is {$oldFile}");
+            if ($oldFile) {
+                File::delete('uploads/journal/' . $oldFile);
+            }
+
             $journal->delete();
             return redirect('admin/journals')->with('message','Journal deleted Successfully');
         }

@@ -40,10 +40,10 @@
                                     <a href="{{ url('admin/edit-article/'.$item->article_id)}}" class="btn btn-success">Edit article</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/articles/delete-article/'.$item->article->id)}}" class="btn btn-danger">Delete article</a>
+                                    <a href="{{ url('admin/articles/delete-article/'.$item->article->id)}}" class="btn btn-danger" onclick="confirmDelete(event, '{{ url('admin/articles/delete-article/'.$item->article->id) }}')">Delete article</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/delete-review/'.$item->id)}}" class="btn btn-danger">Delete review</a>
+                                    <a href="{{ url('admin/delete-review/'.$item->id)}}" class="btn btn-danger" onclick="confirmDelete(event, '{{ url('admin/delete-review/'.$item->id) }}')">Delete review</a>
                                 </td>
                             </tr>
                     @endforeach
@@ -59,5 +59,7 @@
 
     
 </div>
+
+<script src="{{ asset('assets/js/delete-warning.js') }}"></script>
 
 @endsection

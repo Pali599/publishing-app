@@ -38,7 +38,7 @@
                             <a href="{{ url('admin/edit-category/'.$item->id)}}" class="btn btn-success">Edit</a>
                         </td>
                         <td>
-                            <a href="{{ url('admin/delete-category/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                            <a href="{{ url('admin/delete-category/'.$item->id)}}" class="btn btn-danger" onclick="confirmDelete(event, '{{ url('admin/delete-category/'.$item->id) }}')">Delete</a>
                         </td>
                     </tr>
                     @endforeach
@@ -54,5 +54,7 @@
 
     
 </div>
+
+<script src="{{ asset('assets/js/delete-warning.js') }}"></script>
 
 @endsection
