@@ -2,8 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Article;
-use App\Models\Review;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,24 +10,23 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ReviewAddedNotificationMail extends Mailable
+class UserDeletedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-
-    public $review;
     /**
      * Create a new message instance.
      */
-    public function __construct(Review $review)
+    public $user;
+
+    public function __construct(User $user)
     {
-        $this->review = $review;
+        $this->user = $user;
     }
 
     public function build()
     {
-        return $this->view('emails.reviewAdded')
-            ->subject('Article reviewed')
-            ->with('review', $this->review);
+        return $this->subject('Account Deleted')
+            ->view('emails.user_deleted');
     }
 }

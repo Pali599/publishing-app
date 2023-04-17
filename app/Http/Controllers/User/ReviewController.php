@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Events\ReviewAddedAndNotifyUserEvent;
+use App\Events\ReviewEditedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Review\AddReviewFormRequest;
 use App\Http\Requests\Review\EditReviewFormRequest;
@@ -95,7 +96,7 @@ class ReviewController extends Controller
         $article = Article::find($review->article_id);
 
         // Dispatch the ArticleCreated event
-        event(new ReviewAddedAndNotifyUserEvent($review));
+        event(new ReviewEditedEvent($review));
 
         return redirect('/review/display-review/'.$review->article->id)->with('message','Review updated Successfully');
     }

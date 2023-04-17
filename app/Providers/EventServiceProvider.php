@@ -8,7 +8,9 @@ use App\Events\ArticleEditedEvent;
 use App\Events\NotificationEmail;
 use App\Events\ReviewAddedAndNotifyUserEvent;
 use App\Events\ReviewDeletedEvent;
+use App\Events\ReviewEditedEvent;
 use App\Events\ReviewerAddedEvent;
+use App\Events\UserDeletedEvent;
 use App\Listeners\ArticleEditedNotificationListener;
 use App\Listeners\SendUserAddedNotification;
 use App\Listeners\NotificationEmailListener;
@@ -16,6 +18,8 @@ use App\Listeners\SendArticleDeletedNotification;
 use App\Listeners\SendNotificationToReviewer;
 use App\Listeners\SendReviewAddedNotification;
 use App\Listeners\SendReviewDeletedNotification;
+use App\Listeners\SendReviewEditedNotification;
+use App\Listeners\SendUserDeletedNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -52,6 +56,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserAddedEvent::class => [
             SendUserAddedNotification::class,
+        ],
+        ReviewEditedEvent::class => [
+            SendReviewEditedNotification::class,
+        ],
+        UserDeletedEvent::class => [
+            SendUserDeletedNotification::class,
         ],
     ];
     

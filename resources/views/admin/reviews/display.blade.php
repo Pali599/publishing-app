@@ -64,7 +64,10 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="row justify-content-md-end mb-3">
+                    <div class="row justify-content-md-between mb-3">
+                        <div class="col-md-auto">
+                            <a href="{{ url('admin/edit-article/'.$review->article->id)}}" class="btn btn-primary">Edit article</a>
+                        </div>
                         <div class="col-md-auto">
                             <a href="{{ url('/admin/reviews') }}" class="btn btn-secondary">Cancel</a>
                         </div>

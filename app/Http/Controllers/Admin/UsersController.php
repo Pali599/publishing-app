@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Events\UserAddedEvent;
+use App\Events\UserDeletedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EditUserFormRequest;
 use App\Models\User;
@@ -83,10 +84,13 @@ class UsersController extends Controller
 
     public function delete($user_id)
     {
-        $user_id = User::find($user_id);
-        if($user_id)
+        $user = User::find($user_id);
+        if($user)
         {
-            $user_id->delete();
+            $user->delete();
+
+            event(new UserDeletedEvent($user));
+
             return redirect('admin/users')->with('message','User deleted Successfully');
         }
         else

@@ -2,7 +2,6 @@
 
 namespace App\Mail;
 
-use App\Models\Article;
 use App\Models\Review;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,11 +10,13 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ReviewAddedNotificationMail extends Mailable
+class ReviewEditedNotifyAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
-
+    /**
+     * Create a new message instance.
+     */
     public $review;
     /**
      * Create a new message instance.
@@ -27,8 +28,8 @@ class ReviewAddedNotificationMail extends Mailable
 
     public function build()
     {
-        return $this->view('emails.reviewAdded')
-            ->subject('Article reviewed')
+        return $this->view('emails.review_edited_admin')
+            ->subject('Review Updated')
             ->with('review', $this->review);
     }
 }
