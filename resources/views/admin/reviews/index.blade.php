@@ -23,7 +23,6 @@
                         <th>Reviewer</th>
                         <th>Type</th>
                         <th>Result</th>
-                        <th>Comment</th>
                         <th>Published</th>
                     </tr>
                 </thead>
@@ -34,19 +33,18 @@
                                 <td>{{ $item->reviewer->name }}</td>
                                 <td>{{ $item->reviewer->type->type }}</td>
                                 <td>{{ $item->result }}</td>
-                                <td>{{ $item->comment }}</td>
                                 <td>{{ $item->article->published }}</td>
                                 <td>
-                                    <a href="{{ url('admin/display-review/'.$item->id)}}" class="btn btn-success">View review</a>
+                                    <a href="{{ url('admin/display-review/'.$item->id)}}" class="btn btn-success btn-sm">View review</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/edit-article/'.$item->article_id)}}" class="btn btn-success">Edit article</a>
+                                    <a href="{{ url('admin/edit-article/'.$item->article_id)}}" class="btn btn-success btn-sm">Edit article</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/articles/delete-article/'.$item->article->id)}}" class="btn btn-danger" onclick="confirmDelete(event, '{{ url('admin/articles/delete-article/'.$item->article->id) }}')">Delete article</a>
+                                    <a href="{{ url('admin/articles/delete-article/'.$item->article->id)}}" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ url('admin/articles/delete-article/'.$item->article->id) }}')">Delete article</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/delete-review/'.$item->id)}}" class="btn btn-danger" onclick="confirmDelete(event, '{{ url('admin/delete-review/'.$item->id) }}')">Delete review</a>
+                                    <a href="{{ url('admin/delete-review/'.$item->id)}}" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ url('admin/delete-review/'.$item->id) }}')">Delete review</a>
                                 </td>
                             </tr>
                     @endforeach

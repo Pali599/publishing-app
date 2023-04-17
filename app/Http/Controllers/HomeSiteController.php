@@ -11,15 +11,20 @@ class HomeSiteController extends Controller
     public function index()
     {
         $article = Article::all();
-        $journal = Journal::get()->last();
+        $journal = Journal::where('published','yes')->get()->last();
         return view('home.index', compact('article','journal'));
     }
 
     public function archive()
     {
-        $article = Article::all();
-        $journal = Journal::get()->last();
-        return view('home.archive', compact('article','journal'));
+        $journal = Journal::orderBy('id', 'desc')->get();;
+        return view('home.archive', compact('journal'));
+    }
+    public function journalDetails($journal_id)
+    {
+        $journal = Journal::find($journal_id);
+        $selected_articles = $journal->articles;
+        return view('home.archive.details', compact('selected_articles','journal'));
     }
 
     public function details($article_id)

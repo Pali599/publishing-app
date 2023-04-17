@@ -35,10 +35,10 @@
                         <td>{{ $item->description }}</td>
                         <td>{{ $item->slug }}</td>
                         <td>
-                            <a href="{{ url('admin/edit-category/'.$item->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{ url('admin/edit-category/'.$item->id)}}" class="btn btn-success btn-sm">Edit</a>
                         </td>
                         <td>
-                            <a href="{{ url('admin/delete-category/'.$item->id)}}" class="btn btn-danger" onclick="confirmDelete(event, '{{ url('admin/delete-category/'.$item->id) }}')">Delete</a>
+                            <a href="{{ url('admin/delete-category/'.$item->id)}}" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ url('admin/delete-category/'.$item->id) }}')">Delete</a>
                         </td>
                     </tr>
                     @endforeach

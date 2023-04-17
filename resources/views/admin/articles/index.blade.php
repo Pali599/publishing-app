@@ -32,10 +32,10 @@
                                 <td>{{ $item->category->name }}</td>
                                 <td>{{ $item->author->name}}</td>
                                 <td>
-                                    <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success">Edit</a>
+                                    <a href="{{ url('admin/edit-article/'.$item->id)}}" class="btn btn-success btn-sm">Edit</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/articles/delete-article/'.$item->id)}}" class="btn btn-danger" onclick="confirmDelete(event, '{{ url('admin/articles/delete-article/'.$item->id) }}')">Delete</a>
+                                    <a href="{{ url('admin/articles/delete-article/'.$item->id)}}" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ url('admin/articles/delete-article/'.$item->id) }}')">Delete</a>
                                 </td>
                             </tr>
                         @endif

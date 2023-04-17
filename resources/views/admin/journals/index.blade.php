@@ -31,28 +31,28 @@
                         <tr>
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->version }}</td>
-                            <td>{{ $item->file }}</td>
+                            <td>
+                                <a href="{{ url('/download/journal/' . $item->file) }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-file-pdf fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </td>
                             <td>{{ $item->author->name }}</td>
                             <td>{{ $item->published }}</td>
                             <td>
-                                <a href="{{ url('admin/edit-journal/'.$item->id)}}" class="btn btn-success">Edit</a>
+                                <a href="{{ url('admin/edit-journal/'.$item->id)}}" class="btn btn-success btn-sm">Edit</a>
                             </td>
                             <td>
-                                <a href="{{ url('admin/delete-journal/'.$item->id)}}" class="btn btn-danger" onclick="confirmDelete(event, '{{ url('admin/delete-journal/'.$item->id) }}')">Delete</a>
+                                <a href="{{ url('admin/delete-journal/'.$item->id)}}" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ url('admin/delete-journal/'.$item->id) }}')">Delete</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-
-
-
-
-
         </div>
     </div>
-
-    
 </div>
 
 <script src="{{ asset('assets/js/delete-warning.js') }}"></script>

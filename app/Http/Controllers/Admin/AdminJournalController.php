@@ -67,13 +67,13 @@ class AdminJournalController extends Controller
     {
         $journal = Journal::find($journal_id);
         $user = User::all();
+        $article = Article::all();
 
-        return view('admin.journals.edit', compact('user','journal'));
+        return view('admin.journals.edit', compact('user','journal','article'));
     }
 
     public function update(EditJournalFormRequest $request, $journal_id)
     {
-        Log::info('Update method called.');
         $data = $request->validated();
 
         $journal = Journal::find($journal_id);
@@ -82,10 +82,7 @@ class AdminJournalController extends Controller
 
         if ($request->hasFile('file')) {
 
-            Log::info('Request has a file.');
-
             $oldFile = $journal->file;
-            Log::info("old file is {$oldFile}");
             if ($oldFile) {
                 File::delete('uploads/journal/' . $oldFile);
             }
@@ -105,6 +102,11 @@ class AdminJournalController extends Controller
 
         $journal->update();
 
+        $articles = $request->input('articles');
+        if ($articles) {
+            $journal->articles()->sync($articles);
+        }
+
         return redirect('admin/journals')->with('message','Journal updated Successfully');
     }
 
@@ -118,6 +120,8 @@ class AdminJournalController extends Controller
             if ($oldFile) {
                 File::delete('uploads/journal/' . $oldFile);
             }
+            
+            $journal->articles()->detach();
 
             $journal->delete();
             return redirect('admin/journals')->with('message','Journal deleted Successfully');

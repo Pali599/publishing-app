@@ -110,6 +110,7 @@ Route::get('/generate-pdf/{review_id}', [GeneratePDFController::class, 'generate
 Route::prefix('')->group(function () {
     Route::get('/', [HomeSiteController::class, 'index']);
     Route::get('/home/archive', [HomeSiteController::class, 'archive']);
+    Route::get('/home/archive/journal_details/{journal_id}', [HomeSiteController::class, 'journalDetails']);
     Route::get('/home/about', [HomeSiteController::class, 'about']);
     Route::get('/home/contact', [HomeSiteController::class, 'contact']);
     Route::get('/home/details/{article_id}', [HomeSiteController::class, 'details']);

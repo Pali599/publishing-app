@@ -23,4 +23,9 @@ class Journal extends Model
     {
         return $this->belongsTo(User::class,'created_by','id');
     }
+
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class, 'journal_articles');
+    }
 }
