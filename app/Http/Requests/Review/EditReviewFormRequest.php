@@ -27,7 +27,7 @@ class EditReviewFormRequest extends FormRequest
             'improve' => 'nullable|string|max:255',
             'comment_author' => 'nullable|string|max:255',
             'originality' => 'nullable|integer',
-            'contribution' => 'inullable|nteger',
+            'contribution' => 'nullable|integer',
             'technical_quality' => 'nullable|integer',
             'presentation_clarity' => 'nullable|integer',
             'research_depth' => 'nullable|integer',

@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\Article;
+use App\Models\Review;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -18,11 +19,11 @@ class ReviewAddedAndNotifyUserEvent
     /**
      * Create a new event instance.
      */
-    public $article;
+    public $review;
 
-    public function __construct(Article $article)
+    public function __construct(Review $review)
     {
-        $this->article = $article;
+        $this->review = $review;
     }
 
     /**

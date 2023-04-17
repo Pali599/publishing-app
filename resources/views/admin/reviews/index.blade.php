@@ -37,6 +37,9 @@
                                 <td>{{ $item->comment }}</td>
                                 <td>{{ $item->article->published }}</td>
                                 <td>
+                                    <a href="{{ url('admin/display-review/'.$item->id)}}" class="btn btn-success">View review</a>
+                                </td>
+                                <td>
                                     <a href="{{ url('admin/edit-article/'.$item->article_id)}}" class="btn btn-success">Edit article</a>
                                 </td>
                                 <td>

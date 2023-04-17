@@ -25,15 +25,15 @@ class SendReviewAddedNotification
      */
     public function handle(ReviewAddedAndNotifyUserEvent $event): void
     {
-        $createdBy = $event->article->created_by; // Assuming 'reviewer_int' is a column in the Article model
+        $createdBy = $event->review->article->created_by; // Assuming 'reviewer_int' is a column in the Article model
 
         $author = User::where('id', $createdBy)->first();
 
-        Mail::to($author->email)->send(new ReviewAddedNotificationMail($event->article));
+        Mail::to($author->email)->send(new ReviewAddedNotificationMail($event->review));
         
         $adminUsers = User::where('role_id', 1)->get(); // assuming role_id 1 is for admin users
         foreach ($adminUsers as $adminUser) {
-            Mail::to($adminUser->email)->send(new ReviewAddedNotifyAdmin($event->article));
+            Mail::to($adminUser->email)->send(new ReviewAddedNotifyAdmin($event->review));
     }
     }
 

@@ -62,7 +62,7 @@ class ReviewController extends Controller
         $review->save();
 
         // Dispatch the ArticleCreated event
-        event(new ReviewAddedAndNotifyUserEvent($article));
+        event(new ReviewAddedAndNotifyUserEvent($review));
 
         return redirect('/review')->with('message','Review added successfully');
 
@@ -95,7 +95,7 @@ class ReviewController extends Controller
         $article = Article::find($review->article_id);
 
         // Dispatch the ArticleCreated event
-        event(new ReviewAddedAndNotifyUserEvent($article));
+        event(new ReviewAddedAndNotifyUserEvent($review));
 
         return redirect('/review/display-review/'.$review->article->id)->with('message','Review updated Successfully');
     }

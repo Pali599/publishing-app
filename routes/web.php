@@ -52,6 +52,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
     Route::get('reviews', [AdminReviewController::class, 'index']);
     Route::get('delete-review/{review_id}', [AdminReviewController::class, 'delete']);
+    Route::get('display-review/{review_id}', [AdminReviewController::class, 'display']);
 
     Route::get('journals', [AdminJournalController::class, 'index']);
     Route::get('add-journal', [AdminJournalController::class, 'create']);

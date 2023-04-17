@@ -20,6 +20,13 @@ class AdminReviewController extends Controller
         return view('admin.reviews.index', compact('article','review','user'));
     }
 
+    public function display($review_id)
+    {
+        $review = Review::find($review_id);
+        $user = User::all();
+        return view('admin.reviews.display', compact('review','user'));
+    }
+
     public function delete($review_id)
     {
         $review = Review::find($review_id);
