@@ -10,15 +10,15 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ArticleEditedNotification extends Mailable
+class ArticleDeletedMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $article;
 
     /**
      * Create a new message instance.
      */
+    public $article;
+
     public function __construct(Article $article)
     {
         $this->article = $article;
@@ -26,8 +26,8 @@ class ArticleEditedNotification extends Mailable
 
     public function build()
     {
-        return $this->view('emails.articleEdited')
-            ->subject('Article was Edited')
-            ->with('article', $this->article);
+        return $this->subject('Article Deleted')
+            ->view('emails.article_deleted');
     }
+
 }

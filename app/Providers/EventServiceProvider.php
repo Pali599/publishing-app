@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Events\ArticleDeletedEvent;
+use App\Events\ArticleEditedEvent;
 use App\Events\NotificationEmail;
 use App\Events\ReviewAddedAndNotifyUserEvent;
 use App\Events\ReviewerAddedEvent;
+use App\Listeners\ArticleEditedNotificationListener;
 use App\Listeners\NotificationEmailListener;
+use App\Listeners\SendArticleDeletedNotification;
 use App\Listeners\SendNotificationToReviewer;
 use App\Listeners\SendNotificationToUser;
 use Illuminate\Auth\Events\Registered;
@@ -32,6 +36,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         ReviewAddedAndNotifyUserEvent::class => [
             SendNotificationToUser::class,
+        ],
+        ArticleDeletedEvent::class => [
+            SendArticleDeletedNotification::class,
+        ],
+        ArticleEditedEvent::class => [
+            ArticleEditedNotificationListener::class,
         ],
     ];
     

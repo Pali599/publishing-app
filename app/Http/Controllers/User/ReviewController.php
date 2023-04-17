@@ -11,6 +11,7 @@ use App\Models\Article;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ReviewController extends Controller
 {
@@ -52,11 +53,11 @@ class ReviewController extends Controller
         $review->comment = $data['comment'];
         $review->improve = $data['improve'];
         $review->comment_author = $data['comment_author'];
-        $review->originality = $data['originality'];
-        $review->contribution = $data['contribution'];
-        $review->technical_quality = $data['technical_quality'];
-        $review->presentation_clarity = $data['presentation_clarity'];
-        $review->research_depth = $data['research_depth'];
+        $review->originality = $request->originality ?? 0;
+        $review->contribution = $request->contribution ?? 0;
+        $review->technical_quality = $request->technical_quality ?? 0;
+        $review->presentation_clarity = $request->presentation_clarity ?? 0;
+        $review->research_depth = $request->research_depth ?? 0;
 
         $review->save();
 
@@ -83,11 +84,11 @@ class ReviewController extends Controller
         $review->comment = $data['comment'];
         $review->improve = $data['improve'];
         $review->comment_author = $data['comment_author'];
-        $review->originality = $data['originality'];
-        $review->contribution = $data['contribution'];
-        $review->technical_quality = $data['technical_quality'];
-        $review->presentation_clarity = $data['presentation_clarity'];
-        $review->research_depth = $data['research_depth'];
+        $review->originality = $request->originality ?? 0;
+        $review->contribution = $request->contribution ?? 0;
+        $review->technical_quality = $request->technical_quality ?? 0;
+        $review->presentation_clarity = $request->presentation_clarity ?? 0;
+        $review->research_depth = $request->research_depth ?? 0;
 
         $review->update();
 

@@ -173,7 +173,7 @@ class ArticleController extends Controller
 
         $article->update();
 
-        // Dispatch the ArticleCreated event
+        // Dispatch the ArticleEditedEvent event
         event(new ArticleEditedEvent($article));
 
         return redirect('article')->with('message','Article updated Successfully');
@@ -182,6 +182,7 @@ class ArticleController extends Controller
     public function delete($article_id)
     {
         $article = Article::find($article_id);
+        $review = Review::where('article_id', $article->id)->get();
         if($article)
         {
             $oldFile = $article->file;
@@ -190,11 +191,17 @@ class ArticleController extends Controller
             }
 
             $oldLetter = $article->letter;
-            Log::info("old file is {$oldLetter}");
             if ($oldLetter) {
                 Storage::delete('uploads/cover_letter/' . $oldLetter);
             }
 
+            if ($review) {
+                $review->delete();
+            }
+
+            $article->suggestedReviewers()->detach();
+            $article->unwantedReviewers()->detach();
+            
             $article->delete();
 
             return redirect('article')->with('message','Article deleted Successfully');

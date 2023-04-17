@@ -32,19 +32,19 @@
                             <!-- Comment -->
                             <div class="mt-4">
                                 <x-input-label for="comment" :value="__('General comments')" />
-                                <textarea id="comment" class="block mt-1 w-full form-control" type="text" name="comment" :value="old('comment')" required autocomplete="result" ></textarea>
+                                <textarea id="comment" class="block mt-1 w-full form-control" type="text" name="comment" :value="old('comment')" required autocomplete="comment" ></textarea>
                             </div>
 
                             <!-- how to improve -->
                             <div class="mt-4">
                                 <x-input-label for="improve" :value="__('How to improve')" />
-                                <textarea id="improve" class="block mt-1 w-full form-control" type="text" name="improve" :value="old('improve')" autocomplete="result" ></textarea>
+                                <textarea id="improve" class="block mt-1 w-full form-control" type="text" name="improve" :value="old('improve')" autocomplete="improve"></textarea>
                             </div>
 
                             <!-- Comments to the author -->
                             <div class="mt-4">
                                 <x-input-label for="comment_author" :value="__('Comments to the author')" />
-                                <textarea id="comment_author" class="block mt-1 w-full form-control" type="text" name="comment_author" :value="old('comment_author')" autocomplete="result" ></textarea>
+                                <textarea id="comment_author" class="block mt-1 w-full form-control" type="text" name="comment_author" :value="old('comment_author')" autocomplete="comment_author"></textarea>
                             </div>
                         </div>
 

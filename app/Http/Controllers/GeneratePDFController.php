@@ -11,7 +11,7 @@ class GeneratePDFController extends Controller
     public function generate($review_id)
     {
         $review = Review::findOrFail($review_id);
-        $pdf = PDF::loadView('reviews.export', compact('review'));
+        $pdf = PDF::loadView('reviews.pdf', compact('review'));
 
         return $pdf->download('review-'.$review->id.'.pdf');
     }

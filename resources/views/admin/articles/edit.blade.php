@@ -92,13 +92,15 @@
                     <label for="">Optional Reviewer</label>
                     <select id="reviewer_opt" class="form-select" type="text" name="reviewer_opt" required autocomplete="title">
                         @if($article->reviewer_opt == 0)
-                            <option>None</option>
+                            <option value="0">None</option>
                         @endif
                         @foreach($user as $useritem)
-                            <option value="{{ $useritem->id }}" {{ $article->reviewer_opt == $useritem->id ? 'selected' : '' }}>{{ $useritem->name }} -> {{ $useritem->type->type }}</option>
+                            @if($useritem->type_id != 3)
+                                <option value="{{ $useritem->id }}" {{ $article->reviewer_opt == $useritem->id ? 'selected' : '' }}>{{ $useritem->name }} -> {{ $useritem->type->type }}</option>
+                            @endif    
                         @endforeach
                         @if($article->reviewer_opt != 0)
-                            <option>None</option>
+                            <option value="0">None</option>
                         @endif
                     </select>
                 </div>
