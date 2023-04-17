@@ -4,12 +4,13 @@ namespace App\Listeners;
 
 use App\Events\ReviewAddedAndNotifyUserEvent;
 use App\Mail\ReviewAddedNotificationMail;
+use App\Mail\ReviewAddedNotifyAdmin;
 use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
-class SendNotificationToUser
+class SendReviewAddedNotification
 {
     /**
      * Create the event listener.
@@ -32,7 +33,7 @@ class SendNotificationToUser
         
         $adminUsers = User::where('role_id', 1)->get(); // assuming role_id 1 is for admin users
         foreach ($adminUsers as $adminUser) {
-            Mail::to($adminUser->email)->send(new ReviewAddedNotificationMail($event->article));
+            Mail::to($adminUser->email)->send(new ReviewAddedNotifyAdmin($event->article));
     }
     }
 

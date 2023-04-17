@@ -11,7 +11,7 @@ use App\Listeners\ArticleEditedNotificationListener;
 use App\Listeners\NotificationEmailListener;
 use App\Listeners\SendArticleDeletedNotification;
 use App\Listeners\SendNotificationToReviewer;
-use App\Listeners\SendNotificationToUser;
+use App\Listeners\SendReviewAddedNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -35,7 +35,7 @@ class EventServiceProvider extends ServiceProvider
             SendNotificationToReviewer::class,
         ],
         ReviewAddedAndNotifyUserEvent::class => [
-            SendNotificationToUser::class,
+            SendReviewAddedNotification::class,
         ],
         ArticleDeletedEvent::class => [
             SendArticleDeletedNotification::class,
