@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\ReviewDeletedEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Article;
@@ -24,6 +25,9 @@ class AdminReviewController extends Controller
         $review = Review::find($review_id);
         if($review)
         {
+            // Dispatch the ReviewDeletedEvent event
+            event(new ReviewDeletedEvent($review));
+
             $review->delete();
             return redirect('admin/reviews')->with('message','Review deleted Successfully');
         }

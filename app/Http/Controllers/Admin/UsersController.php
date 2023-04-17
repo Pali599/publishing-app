@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\UserAddedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EditUserFormRequest;
 use App\Models\User;
@@ -10,6 +11,7 @@ use App\Models\UserType;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules;
 
 class UsersController extends Controller
@@ -56,7 +58,8 @@ class UsersController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        
+        event(new UserAddedEvent($user));
 
         return redirect('admin/users')->with('message','User Added Successfully');
     }

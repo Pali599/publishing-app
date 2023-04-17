@@ -23,9 +23,9 @@ class SendArticleDeletedNotification
      */
     public function handle(ArticleDeletedEvent $event): void
     {
-        $author = $event->article->author; // Assuming the 'user' relationship exists in the Article model
+        $author = $event->article->author; // Assuming the 'author' relationship exists in the Article model
         if ($author) {
-        Mail::to($author->email)->send(new ArticleDeletedMail($event->article));
-    }
+            Mail::to($author->email)->send(new ArticleDeletedMail($event->article));
+        }
     }
 }

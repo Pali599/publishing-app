@@ -6,8 +6,8 @@
     <title>Article Deleted Notification</title>
 </head>
 <body>
-    <p>Dear {{ $article->author->name }},</p>
-    <p>We regret to inform you that your article titled "{{ $article->title }}" has been deleted.</p>
+    <p>Dear {{ $review->reviewer->name }},</p>
+    <p>We regret to inform you that your review to article "{{ $review->article->title }}" has been deleted.</p>
     <!-- Add any other necessary information -->
     <p>Best regards,</p>
     <p>Your EasyPublish Team</p>
