@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminReviewController;
 use App\Http\Controllers\Admin\AdminJournalController;
 use App\Http\Controllers\DownloadFileController;
 use App\Http\Controllers\Admin\PublishedArticlesController;
+use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\GeneratePDFController;
 
 /*
@@ -41,7 +42,6 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::put('update-user/{user_id}', [UsersController::class, 'update']);
     Route::get('delete-user/{user_id}', [UsersController::class, 'delete']);
     
-
     Route::get('articles', [ArticlesController::class, 'index']);
     Route::get('edit-article/{article_id}', [ArticlesController::class, 'edit']);
     Route::put('update-article/{article_id}', [ArticlesController::class, 'update']);
@@ -61,9 +61,6 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::put('update-journal/{journal_id}', [AdminJournalController::class, 'update']);
     Route::get('delete-journal/{journal_id}', [AdminJournalController::class, 'delete']);
 
-
-    
-
     Route::get('category', [CategoryController::class, 'index']);
     Route::get('add-category', [CategoryController::class, 'create']);
     Route::post('add-category', [CategoryController::class, 'store']);
@@ -71,7 +68,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::put('update-category/{category_id}', [CategoryController::class, 'update']);
     Route::get('delete-category/{category_id}', [CategoryController::class, 'delete']);
 
-    
+    Route::get('search/{model}', [SearchController::class, 'search'])->name('search');
 
 });
 

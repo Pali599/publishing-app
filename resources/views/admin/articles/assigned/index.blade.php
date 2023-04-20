@@ -11,7 +11,7 @@
                 Assigned Articles <a href="{{ url('article/add') }}" class="btn btn-primary btn-sm float-end">Add article</a>
             </h4>
         </div>
-        <div class="card-body">
+        <div id="articles" class="card-body">
             @if (session('message'))
                 <div class="alert alert-success">{{ session('message') }}</div>
             @endif
@@ -55,5 +55,68 @@
 </div>
 
 <script src="{{ asset('assets/js/delete-warning.js') }}"></script>
+
+<script>
+    const searchModel = 'article'; // Change this to the desired model (user, journal, category, etc.)
+
+    document.querySelector('#search').addEventListener('input', (event) => {
+        const query = event.target.value;
+        if (query.length >= 3) {
+            fetch(`/admin/search/article?query=${query}`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then((articles) => {
+                    displaySearchResults(articles);
+                })
+                .catch((error) => {
+                    console.error('Error fetching search results:', error);
+                });
+        } else {
+            fetch(`/admin/search/article`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then((articles) => {
+                    displaySearchResults(articles);
+                })
+                .catch((error) => {
+                    console.error('Error fetching search results:', error);
+                });
+        }
+    });
+
+    function displaySearchResults(articles) {
+        let output = '';
+        articles.forEach(article => {
+            if (article.reviewer_int !== 0 && article.reviewer_ext !== 0 && article.published !== 'yes') {
+                output += `
+                    <tr>
+                        <td>${article.title}</td>
+                        <td>${article.author.name}</td>
+                        <td>${article.internal.name}</td>
+                        <td>${article.external.name}</td>
+                        <td>${article.reviewerOpt ? article.reviewerOpt.name : 'Not assigned'}</td>
+                        <td>
+                            <a href="/admin/edit-article/${article.id}" class="btn btn-success btn-sm">Edit</a>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '/admin/articles/delete-article/${article.id}')">Delete</a>
+                        </td>
+                    </tr>
+                `;
+            }
+        });
+
+        document.querySelector('#articles tbody').innerHTML = output;
+    }
+</script>
+
 
 @endsection
